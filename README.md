@@ -1,6 +1,6 @@
 # Project Euler
 
-These are my solutions to the [Project Euler][1] problems, written in Julia or in Rust or both.
+These are my solutions to the [Project Euler][1] problems, written in Julia or Rust or both.
 
 [1]: http://projecteuler.net
 
