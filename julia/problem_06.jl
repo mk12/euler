@@ -5,8 +5,7 @@
 module problem_06
 
 function main()
-	sum = 0
-	sqsum = 0
+	sum, sqsum = 0, 0
 	for n = 1:100
 		sum += n
 		sqsum += n^2

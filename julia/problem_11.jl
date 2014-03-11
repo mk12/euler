@@ -28,26 +28,26 @@ const grid = [
 ]
 
 function main()
-	const h, w = size(grid)
+	const m, n = size(grid)
 	largest = 0
-	for x = 1:w, y = 1:h
-		left  = x - 3 >= 1
-		right = x + 3 <= w
-		down  = y + 3 <= h
+	for j = 1:n, i = 1:m
+		left  = j - 3 >= 1
+		right = j + 3 <= n
+		down  = i + 3 <= m
 		if right
-			p = reduce(*, grid[y,x:x+3])
+			p = reduce(*, grid[i,j:j+3])
 			if p > largest; largest = p; end
 		end
 		if down
-			p = reduce(*, grid[y:y+3,x])
+			p = reduce(*, grid[i:i+3,j])
 			if p > largest; largest = p; end
 		end
 		if right && down
-			p = *(grid[y,x], grid[y+1,x+1], grid[y+2,x+2], grid[y+3,x+3])
+			p = *(grid[i,j], grid[i+1,j+1], grid[i+2,j+2], grid[i+3,j+3])
 			if p > largest; largest = p; end
 		end
 		if left && down
-			p = *(grid[y,x], grid[y+1,x-1], grid[y+2,x-2], grid[y+3,x-3])
+			p = *(grid[i,j], grid[i+1,j-1], grid[i+2,j-2], grid[i+3,j-3])
 			if p > largest; largest = p; end
 		end
 	end
