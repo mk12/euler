@@ -13,14 +13,12 @@ fn divisors(n: int) -> int {
 	count * 2
 }
 
-fn main() {
+pub fn solve() -> int {
 	let mut tri = 1;
 	let mut i = 1;
 	loop {
 		if divisors(tri) > 500 {
-			println!("{}", tri);
-			assert!(tri == 76576500);
-			return;
+			return tri;
 		}
 		i += 1;
 		tri += i;

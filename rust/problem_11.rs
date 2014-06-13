@@ -2,7 +2,7 @@
 // Project Euler: Problem 11
 // Largest product in a grid
 
-static side: int = 20;
+static side: uint = 20;
 static grid: [int, ..side*side] = [
 	08,02,22,97,38,15,00,40,00,75,04,05,07,78,52,12,50,77,91,08,
 	49,49,99,40,17,81,18,57,60,87,17,40,98,43,69,48,04,56,62,00,
@@ -26,7 +26,7 @@ static grid: [int, ..side*side] = [
 	01,70,54,71,83,51,54,69,16,92,33,48,61,43,52,01,89,19,67,48
 ];
 
-fn main() {
+pub fn solve() -> int {
 	let s = side;
 	let mut largest = 0;
 	for y in range(0, s) {
@@ -53,6 +53,5 @@ fn main() {
 			}
 		}
 	}
-	println!("{}", largest);
-	assert!(largest == 70600674);
+	largest
 }

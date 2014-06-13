@@ -15,7 +15,7 @@ fn is_prime(n: int) -> bool {
 	true
 }
 
-fn main() {
+pub fn solve() -> int {
 	let max = 2000000;
 	let mut sum = 2 + 3;
 	let mut n = 1;
@@ -27,6 +27,5 @@ fn main() {
 		if n >= max { break; }
 		if is_prime(n) { sum += n; }
 	}
-	println!("{}", sum);
-	assert!(sum == 142913828922);
+	sum
 }

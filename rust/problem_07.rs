@@ -3,9 +3,7 @@
 // 10001st prime
 
 fn is_prime(n: int) -> bool {
-	if n % 2 == 0 || n % 3 == 0 {
-		return false;
-	}
+	if n % 2 == 0 || n % 3 == 0 { return false; }
 	let max = (n as f32).sqrt() as int;
 	let mut div = 5;
 	while div <= max {
@@ -17,7 +15,7 @@ fn is_prime(n: int) -> bool {
 	true
 }
 
-fn main() {
+pub fn solve() -> int {
 	let mut n = 1;
 	let mut count = 2;
 	while count < 10001 {
@@ -30,6 +28,5 @@ fn main() {
 			count += 1;
 		}
 	}
-	println!("{}", n);
-	assert!(n == 104743);
+	n
 }

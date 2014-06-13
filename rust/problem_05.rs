@@ -2,7 +2,7 @@
 // Project Euler: Problem 5
 // Smallest multiple
 
-fn main() {
+pub fn solve() -> int {
 	let mut n = 20;
 	loop {
 		let mut good = true;
@@ -13,9 +13,7 @@ fn main() {
 			}
 		}
 		if good {
-			println!("{}", n);
-			assert!(n == 232792560);
-			return;
+			return n;
 		}
 		n += 20;
 	}
