@@ -8,11 +8,11 @@ These are my solutions to the [Project Euler][1] problems, written in Rust and J
 
 ### Rust solutions
 
-Compile an individual solution (ideally with `prefer-dynamic` and optimizations enabled), and then execute the resulting binary.
+Compile `test.rs` and run the resulting executable with no arguments to check and benchmark all solutions. To just look at one solution, supply the problem's number as a command-line argument.
 
 ### Julia solutions
 
-Use `julia test.jl` to check all the solutions, or run `julia test.jl N` to time the Nth solution (this will run the program twice and time the second invocation so that jitting time isn't included). Alternatively, fire up the REPL and type `import problem_N`.
+Use `julia test.jl` or `julia test.jl N` the same way that you use the Rust binary.
 
 ## License
 
