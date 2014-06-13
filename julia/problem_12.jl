@@ -15,7 +15,7 @@ function divisors(n)
 	count
 end
 
-function main()
+function solve()
 	tri, i = 1, 1
 	while true
 		if divisors(tri) > 500

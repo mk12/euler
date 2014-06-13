@@ -10,7 +10,7 @@ function asum(d)
 	div(d * n * (n+1), 2)
 end
 
-function main()
+function solve()
 	asum(3) + asum(5) - asum(15)
 end
 

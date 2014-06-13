@@ -13,7 +13,7 @@ function divisible(n)
 	true
 end
 
-function main()
+function solve()
 	multiple = 20
 	while !divisible(multiple)
 		multiple += 20

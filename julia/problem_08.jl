@@ -34,7 +34,7 @@ const series = [
 	4,2,0,7,5,2,9,6,3,4,5,0
 ]
 
-function main()
+function solve()
 	largest = 0
 	for i = 1:length(series)-4
 		p = reduce(*, series[i:i+4])

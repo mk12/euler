@@ -6,7 +6,7 @@ module problem_10
 
 import problem_07: isprime
 
-function main()
+function solve()
 	const max = 2_000_000
 	total = 2 + 3
 	n = 1

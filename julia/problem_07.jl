@@ -16,7 +16,7 @@ function isprime(n)
 	true
 end
 
-function main()
+function solve()
 	n = 1
 	count = 2
 	while true

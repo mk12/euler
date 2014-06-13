@@ -8,7 +8,7 @@ function combinations(n, k)
 	div(reduce(*, n-k+1:n), factorial(k))
 end
 
-function main()
+function solve()
 	const side = big(20)
 	combinations(2side, side)
 end

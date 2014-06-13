@@ -30,7 +30,7 @@ function maxsum(i, j)
 	x + max(maxsum(i+1, j), maxsum(i, j+1))
 end
 
-function main()
+function solve()
 	maxsum(1, 1)
 end
 

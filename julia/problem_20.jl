@@ -4,9 +4,8 @@
 
 module problem_20
 
-function main()
+function solve()
 	sum(digits(factorial(big(100))))
 end
 
 end # module
-

@@ -14,7 +14,7 @@ function collatzlen(n)
 	len
 end
 
-function main()
+function solve()
 	best, bestlen = 1, 1
 	for i = 2:1_000_000
 		len = collatzlen(i)

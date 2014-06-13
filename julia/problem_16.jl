@@ -4,7 +4,7 @@
 
 module problem_16
 
-function main()
+function solve()
 	sum(digits(big(2)^1000))
 end
 

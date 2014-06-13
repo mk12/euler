@@ -107,7 +107,7 @@ const series = [
 	53503534226472524250874054075591789781264330331690
 ]
 
-function main()
+function solve()
 	total = sum(series)
 	while total >= int(1e10)
 		total = div(total, 10)

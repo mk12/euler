@@ -4,7 +4,7 @@
 
 module problem_02
 
-function main()
+function solve()
 	a, b = 0, 1
 	total = 0
 	while a < 4_000_000

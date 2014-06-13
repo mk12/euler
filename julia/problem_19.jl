@@ -17,7 +17,7 @@ function ndays(y, m)
 	monthlens[m]
 end
 
-function main()
+function solve()
 	# 1 January 1901 was a Tuesday.
 	# Given d % 7, weekday is 0:6 == Sun:Sat.
 	d = 2

@@ -4,7 +4,7 @@
 
 module problem_03
 
-function main()
+function solve()
 	n = 600851475143
 	factor = 1
 	while n != 1

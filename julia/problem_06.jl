@@ -4,7 +4,7 @@
 
 module problem_06
 
-function main()
+function solve()
 	sum, sqsum = 0, 0
 	for n = 1:100
 		sum += n

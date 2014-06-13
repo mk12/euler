@@ -27,7 +27,7 @@ const grid = [
 	01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 ]
 
-function main()
+function solve()
 	const m, n = size(grid)
 	largest = 0
 	for j = 1:n, i = 1:m

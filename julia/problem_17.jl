@@ -4,7 +4,7 @@
 
 module problem_17
 
-function main()
+function solve()
 	const and = 3
 	const hundred = 7
 	const onethousand = 3 + 8

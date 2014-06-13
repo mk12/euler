@@ -14,7 +14,7 @@ function ispalindrome(n)
 	true
 end
 
-function main()
+function solve()
 	largest = 0
 	for a = 100:999, b = 100:999
 		c = a * b
