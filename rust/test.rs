@@ -8,19 +8,22 @@ use time::precise_time_ns;
 
 mod problem_01; mod problem_02; mod problem_03; mod problem_04; mod problem_05;
 mod problem_06; mod problem_07; mod problem_08; mod problem_09; mod problem_10;
-mod problem_11; mod problem_12; mod problem_13;
+mod problem_11; mod problem_12; mod problem_13; mod problem_14; mod problem_15;
+mod problem_16; mod problem_17; mod problem_18; mod problem_19; mod problem_20;
 
-static n_solved: uint = 13;
+static n_solved: uint = 20;
 static answers: [int, ..n_solved] = [
 	233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 40824, 31875000,
-	142913828922, 70600674, 76576500, 5537376230
+	142913828922, 70600674, 76576500, 5537376230, 837799, 137846528820, 1366,
+	21124, 1074, 171, 648
 ];
 
 static solvers: [fn() -> int, ..n_solved] = [
 	problem_01::solve, problem_02::solve, problem_03::solve, problem_04::solve, 
 	problem_05::solve, problem_06::solve, problem_07::solve, problem_08::solve, 
 	problem_09::solve, problem_10::solve, problem_11::solve, problem_12::solve, 
-	problem_13::solve
+	problem_13::solve, problem_14::solve, problem_15::solve, problem_16::solve,
+	problem_17::solve, problem_18::solve, problem_19::solve, problem_20::solve
 ];
 
 // Returns true if there is a solution to the nth problem.

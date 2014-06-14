@@ -2,10 +2,12 @@
 // Project Euler: Problem 12
 // Highly divisible triangular number
 
-// off by one for perfect squares
+// Returns the number of divisors that n has. The result is incorrect for
+// perfect squares (off by one).
 fn divisors(n: int) -> int {
 	let mut count = 2;
-	for i in range(2, (n as f32).sqrt() as int + 1) {
+	let max = (n as f32).sqrt() as int + 1;
+	for i in range(2, max) {
 		if n % i == 0 {
 			count += 1;
 		}

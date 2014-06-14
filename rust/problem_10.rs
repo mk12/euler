@@ -2,18 +2,7 @@
 // Project Euler: Problem 10
 // Summation of primes
 
-fn is_prime(n: int) -> bool {
-	if n % 2 == 0 || n % 3 == 0 { return false; }
-	let max = (n as f32).sqrt() as int;
-	let mut div = 5;
-	while div <= max {
-		if n % div == 0 || n % (div + 2) == 0 {
-			return false;
-		}
-		div += 6;
-	}
-	true
-}
+use problem_07::is_prime;
 
 pub fn solve() -> int {
 	let max = 2000000;

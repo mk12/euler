@@ -12,9 +12,7 @@ pub fn solve() -> int {
 				break;
 			}
 		}
-		if good {
-			return n;
-		}
+		if good { return n; }
 		n += 20;
 	}
 }

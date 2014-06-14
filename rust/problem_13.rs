@@ -112,12 +112,12 @@ static strings: [&'static str, ..100] = [
 ];
 
 // Converts an int into a BigInt.
-fn big(x: int) -> BigInt {
+pub fn big(x: int) -> BigInt {
 	FromPrimitive::from_int(x).unwrap()
 }
 
 // Converts a BigInt into an int.
-fn small(x: BigInt) -> int {
+pub fn small(x: BigInt) -> int {
 	x.to_int().unwrap()
 }
 

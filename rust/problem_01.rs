@@ -2,12 +2,13 @@
 // Project Euler: Problem 1
 // Multiples of 3 and 5
 
+// Returns the sum of the arithmetic series that goes from 0 to 999 with a
+// common difference of d.
+fn arith_sum(d: int) -> int {
+	let n = 999 / d;
+	d * n * (n + 1) / 2
+}
+
 pub fn solve() -> int {
-	let mut sum = 0;
-	for n in range(0, 1000) {
-		if n % 3 == 0 || n % 5 == 0 {
-			sum += n;
-		}
-	}
-	sum
+	arith_sum(3) + arith_sum(5) - arith_sum(15)
 }
