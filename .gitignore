@@ -1,0 +1,10 @@
+/rust/test
+/clojure/target
+/clojure/classes
+/clojure/checkout
+/clojure/.lein-*
+/clojure/.nrepl-port
+pom.xml
+pom.xml.asc
+*.jar
+*.class
