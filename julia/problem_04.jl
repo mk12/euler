@@ -16,7 +16,7 @@ end
 
 function solve()
 	largest = 0
-	for a = 100:999, b = 100:999
+	for a = 100:999, b = a:999
 		c = a * b
 		if c > largest && ispalindrome(c)
 			largest = c
