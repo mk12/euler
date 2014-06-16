@@ -12,7 +12,7 @@ Compile [test.rs](rust/test.rs) to get the `test` binary.
 
 ### Julia
 
-Julia is JIT-compiled, so you do not need to compile anything. Just invoke the test program with `julia test.jl args`. When testing solutions, [test.jl](julia/test.jl) will execute the `solve` function twice and timed the second time to avoid including JIT compilation time in the benchmark. Testing all the solutions will feel slower because of this, so make sure you pay attention to the numbers.
+Invoke the test program with `julia test.jl args`. When testing solutions, [test.jl](julia/test.jl) will execute the `solve` function twice and timed the second time to avoid including JIT compilation time in the benchmark. This will make testing feel slower, so make sure you pay attention to the numbers.
 
 ### Clojure
 
