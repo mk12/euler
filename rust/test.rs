@@ -13,9 +13,9 @@ mod problem_16; mod problem_17; mod problem_18; mod problem_19; mod problem_20;
 
 static n_solved: uint = 20;
 static answers: [int, ..n_solved] = [
-	233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 40824, 31875000,
-	142913828922, 70600674, 76576500, 5537376230, 837799, 137846528820, 1366,
-	21124, 1074, 171, 648
+	233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 23514624000,
+	31875000, 142913828922, 70600674, 76576500, 5537376230, 837799, 137846528820,
+	1366, 21124, 1074, 171, 648
 ];
 
 static solvers: [fn() -> int, ..n_solved] = [
@@ -31,15 +31,22 @@ fn has_solution(n: uint) -> bool {
 	n >= 1 && n <= n_solved
 }
 
+// Indicates the that the program has failed by setting the exit status to 1.
+fn failure() {
+	std::os::set_exit_status(1);
+}
+
 // Prints the usage message to stdout, or to stderr if err is true.
 fn print_usage(err: bool) {
 	let mut stream = if err { stdio::stderr() } else { stdio::stdout() };
 	let _ = stream.write_str("usage: test [ -h | problem_number]\n");
+	if err { failure(); }
 }
 
 // Prints an error message to stderr with context.
 fn print_error(context: &str, msg: &str) {
 	let _ = write!(stdio::stderr(), "error: {}: {}\n", context, msg);
+	failure();
 }
 
 // Returns a string to indicate the given success status.
@@ -67,8 +74,10 @@ fn test(n: uint) -> bool {
 fn test_all() {
 	let passes = range_inclusive(1, n_solved).filter(|&i| test(i)).count();
 	let fails = n_solved - passes;
-	let msg = status_str(fails == 0);
+	let success = fails == 0;
+	let msg = status_str(success);
 	println!("{}. {} passed; {} failed", msg, passes, fails);
+	if !success { failure(); }
 }
 
 // Handles the case where a single command-line argument is supplied.
