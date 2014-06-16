@@ -36,8 +36,8 @@ const series = [
 
 function solve()
 	largest = 0
-	for i = 1:length(series)-4
-		p = reduce(*, series[i:i+4])
+	for i = 1:length(series)-12
+		p = reduce(*, series[i:i+12])
 		if p > largest
 			largest = p
 		end

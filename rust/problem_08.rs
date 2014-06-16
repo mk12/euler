@@ -34,8 +34,11 @@ static num: [int, ..1000] = [
 
 pub fn solve() -> int {
 	let mut largest = 0;
-	for i in range(0, num.len() - 4) {
-		let p = num[i] * num[i+1] * num[i+2] * num[i+3] * num[i+4];
+	for i in range(0, num.len() - 12) {
+		let mut p = 1;
+		for j in range(i, i + 13) {
+			p *= num[j];
+		}
 		if p > largest {
 			largest = p;
 		}
