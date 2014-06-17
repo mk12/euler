@@ -4,7 +4,7 @@
 
 (ns euler.problem-05)
 
-(defn divisible?
+(defn divisible-19?
   "Returns true if n is divisible by all the numbers from 1 to 19."
   [n]
   (loop [d 11]
@@ -14,6 +14,6 @@
 
 (defn solve []
   (loop [n 20]
-    (if (divisible? n)
+    (if (divisible-19? n)
       n
       (recur (+ 20 n)))))

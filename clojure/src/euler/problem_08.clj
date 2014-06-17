@@ -32,13 +32,13 @@
    0 0 0 5 5 9 3 5 7 2 9 7 2 5 7 1 6 3 6 2 6 9 5 6 1 8 8 2 6 7 0 4 2 8 2 5 2 4 8
    3 6 0 0 8 2 3 2 5 7 5 3 0 4 2 0 7 5 2 9 6 3 4 5 0])
 
-(defn adjacent-digits
-  ""
+(defn adjacent-products
+  "Returns a collection of the product of all subvectors of n items in xs. The
+  first value is the product of the first n items in xs; the second subvector is
+  shifted one element down."
   [xs n]
-  (map #(subvec xs % (+ n %))
-       (range (- (count xs) (dec n)))))
+  (map (fn [i] (apply * (subvec xs i (+ n i))))
+       (range (inc (- (count xs) n)))))
 
 (defn solve []
-  (apply max
-         (map #(apply * %)
-              (adjacent-digits series 13))))
+  (apply max (adjacent-products series 13)))

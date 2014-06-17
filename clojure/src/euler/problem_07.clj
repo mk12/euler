@@ -10,20 +10,23 @@
   [x]
   (int (Math/sqrt x)))
 
-(defn divisible?
-  "Returns true if n is divisible by d, false otherwise."
+(defn indivisible?
+  "Returns false if n is divisible by d, true otherwise."
   [n d]
-  (zero? (rem n d)))
+  (not (zero? (rem n d))))
 
 (defn prime?
   "Returns true if n is prime, false otherwise. Assumes n > 3."
   [n]
   {:pre [(> n 3)]}
-  (not (or (even? n)
-           (divisible? n 3)
-           (some #(or (divisible? n %)
-                      (divisible? n (+ 2 %)))
-                 (range 5 (inc (isqrt n)) 6)))))
+  (and (odd? n)
+       (indivisible? n 3)
+       (let [root (isqrt n)]
+         (loop [d 5]
+           (or (> d root)
+               (and (indivisible? n d)
+                    (indivisible? n (+ d 2))
+                    (recur (+ d 6))))))))
 
 (defn potential-primes
   "Returns a lazy sequence of numbers that could potentially be prime, beginning
