@@ -2,7 +2,8 @@
 ;;; Project Euler: Problem 13
 ;;; Large sum
 
-(ns euler.problem-13)
+(ns euler.problem-13
+  (:require [euler.common :as c]))
 
 (def series
   [37107287533902102798797998220837590246510135740250
@@ -111,4 +112,4 @@
        (iterate #(quot % 10))
        (drop-while #(>= % (bigint 1e10)))
        first
-       long))
+       c/small-int))

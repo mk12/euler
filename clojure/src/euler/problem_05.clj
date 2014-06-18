@@ -8,8 +8,10 @@
 (defn divisible-19?
   "Returns true if n is divisible by all the numbers from 1 to 19."
   [n]
-  (every? #(c/divisible? n %)
-          (range 11 20)))
+  (loop [d 11]
+    (or (== d 20)
+        (and (c/divisible? n d)
+             (recur (inc d))))))
 
 (defn solve []
   (->> (c/inf-range 20 20)

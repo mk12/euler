@@ -3,7 +3,14 @@
 (ns euler.common
   (:import java.lang.Math))
 
-;;;;; Common
+;;;;; General
+
+(def small-int long)
+
+(defn map-values
+  "Applies f to all the values in the map m."
+  [f m]
+  (into {} (map (fn [[k v]] [k (f v)]) m)))
 
 (defn rangei
   "Like range, but the end is inclusive."
@@ -38,7 +45,7 @@
 (defn square [x] (* x x))
 
 (defn isqrt
-  "Returns the integer square root of x."
+  "Returns the integer square root of the perfect square x."
   [x]
   (int (Math/sqrt x)))
 
@@ -88,3 +95,18 @@
   "Returns an infinite lazy sequence of the triangular numbers."
   []
   (reductions + (range)))
+
+;;;;; Other
+
+(defn factorial
+  "Calculates the factorial of n."
+  [n]
+  (apply * (rangei 1N n)))
+
+(defn digits
+  "Returns a lazy sequence of the digits of n as individual integers. The digits
+  are in little endian order (from least significant to most significant)."
+  [n]
+  (->> (iterate #(quot % 10) n)
+       (take-while (complement zero?))
+       (map #(small-int (rem % 10)))))

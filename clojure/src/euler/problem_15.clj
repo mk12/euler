@@ -5,7 +5,7 @@
 (ns euler.problem-15
   (:require [euler.common :as c]))
 
-(defn combinations
+(defn n-combinations
   "Calculates the number of ways of choosing k items from a collection of n
   items (order does not matter)."
   [n k]
@@ -14,4 +14,4 @@
 
 (defn solve []
   (let [side 20N]
-    (long (combinations (* 2 side) side))))
+    (c/small-int (n-combinations (* 2 side) side))))

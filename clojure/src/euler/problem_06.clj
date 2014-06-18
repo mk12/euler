@@ -6,6 +6,6 @@
   (:require [euler.common :as c]))
 
 (defn solve []
-  (let [xs (range 1 101)]
+  (let [xs (c/rangei 1 100)]
     (- (c/square (apply + xs))
        (apply + (map c/square xs)))))
