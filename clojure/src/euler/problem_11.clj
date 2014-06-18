@@ -2,7 +2,8 @@
 ;;; Project Euler: Problem 11
 ;;; Largest product in a grid
 
-(ns euler.problem-11)
+(ns euler.problem-11
+  (:require [euler.common :as c]))
 
 (def side 20)
 (def grid
@@ -31,7 +32,7 @@
   "Returns the value at the coordinate (i,j) in the grid vector. If the
   coordinates are out of bounds, returns zero."
   [[i j]]
-  (get grid (+ (* i side) j) 0))alias
+  (get grid (+ (* i side) j) 0))
 
 (defn adj-coords
   "Given a coordinate of the form [i j] and a direction of the form [di dj],
@@ -47,12 +48,10 @@
   [coord dir n]
   (apply * (map item (adj-coords coord dir n))))
 
-(defn maximum [xs] (apply max xs))
-
 (defn solve []
-  (maximum
+  (c/maximum
     (for [i (range side)
           j (range side)]
-      (maximum
+      (c/maximum
         (map #(adj-product [i j] % 4)
              [[0 1] [1 0] [1 1] [1 -1]])))))

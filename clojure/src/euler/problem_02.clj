@@ -2,15 +2,11 @@
 ;;; Project Euler: Problem 2
 ;;; Even Fibonacci numbers
 
-(ns euler.problem-02)
-
-(defn fibonacci
-  "Returns a lazy sequence of Fibonacci numbers."
-  [a b]
-  (cons a (lazy-seq (fibonacci b (+ a b)))))
+(ns euler.problem-02
+  (:require [euler.common :as c]))
 
 (defn solve []
-  (->> (fibonacci 0 1)
+  (->> (c/fibonacci)
        (take-while #(< % 4000000))
        (filter even?)
        (reduce +)))

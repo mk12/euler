@@ -2,7 +2,8 @@
 ;;; Project Euler: Problem 8
 ;;; Largest product in a series
 
-(ns euler.problem-08)
+(ns euler.problem-08
+  (:require [euler.common :as c]))
 
 (def series
   [7 3 1 6 7 1 7 6 5 3 1 3 3 0 6 2 4 9 1 9 2 2 5 1 1 9 6 7 4 4 2 6 5 7 4 7 4 2 3
@@ -37,8 +38,8 @@
   first value is the product of the first n items in xs; the second subvector is
   shifted one element down."
   [xs n]
-  (map (fn [i] (apply * (subvec xs i (+ n i))))
-       (range (inc (- (count xs) n)))))
+  (map (fn [i] (apply * (subvec xs i (+ i n))))
+       (c/rangei (- (count xs) n))))
 
 (defn solve []
-  (apply max (adjacent-products series 13)))
+  (c/maximum (adjacent-products series 13)))

@@ -2,11 +2,10 @@
 ;;; Project Euler: Problem 6
 ;;; Sum square difference
 
-(ns euler.problem-06)
-
-(defn square [x] (* x x))
+(ns euler.problem-06
+  (:require [euler.common :as c]))
 
 (defn solve []
   (let [xs (range 1 101)]
-    (- (square (apply + xs))
-       (apply + (map square xs)))))
+    (- (c/square (apply + xs))
+       (apply + (map c/square xs)))))

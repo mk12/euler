@@ -2,7 +2,8 @@
 ;;; Project Euler: Problem 4
 ;;; Largest palindrome product
 
-(ns euler.problem-04)
+(ns euler.problem-04
+  (:require [euler.common :as c]))
 
 (defn palindrome?
   "Returns true if n is a palindrome, false otherwise."
@@ -12,8 +13,7 @@
     (= digits (reverse digits))))
 
 (defn solve []
-  (apply
-    max
+  (c/maximum
     (for [a (range 100 1000)
           b (range a 1000)
           :let [c (* a b)]

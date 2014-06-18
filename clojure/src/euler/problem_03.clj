@@ -7,10 +7,9 @@
 (defn divide-out
   "Divides n by d until it can no longer divide."
   [n d]
-  (loop [n n]
-    (if (zero? (rem n d))
-      (recur (/ n d))
-      n)))
+  (->> (iterate #(/ % d) n)
+       (take-while integer?)
+       last))
 
 (defn largest-prime-factor
   "Finds the largest prime factor of an odd integer n."
