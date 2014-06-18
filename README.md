@@ -8,7 +8,7 @@ These are my solutions to the [Project Euler][1] problems, written in Rust, Juli
 
 ### Rust
 
-Compile [test.rs](rust/test.rs) to get the `test` binary.
+Compile [test.rs](rust/test.rs) to get the `test` binary. Make sure to enable optimizations with `-O`. To keep the binaries small, enable dynamic linking with `-C prefer-dynamic`.
 
 ### Julia
 
