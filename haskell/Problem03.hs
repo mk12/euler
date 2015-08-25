@@ -6,10 +6,10 @@ module Problem03 where
 
 import Common (divides)
 
-divideOut :: Integral a => a -> a -> a
+divideOut :: Int -> Int -> Int
 divideOut x = until (not . divides x) (`div` x)
 
-largestPrimeFactor :: Integral a => a -> a
+largestPrimeFactor :: Int -> Int
 largestPrimeFactor n = go n 1
   where
     go 1 x = x

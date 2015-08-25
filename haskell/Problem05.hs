@@ -9,7 +9,7 @@ import Common (divides)
 import Data.List (find)
 import Data.Maybe (fromJust)
 
-divisibleTo19 :: Integral a => a -> Bool
+divisibleTo19 :: Int -> Bool
 divisibleTo19 n = all (flip divides n) [11..19]
 
 solve :: Int

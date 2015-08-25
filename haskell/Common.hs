@@ -11,24 +11,24 @@ import Data.List (delete)
 
 -- Algebra
 
-square :: Num a => a -> a
+square :: Int -> Int
 square x = x * x
 
-divides :: Integral a => a -> a -> Bool
+divides :: Int -> Int -> Bool
 divides a b = b `rem` a == 0
 
-factorial :: (Enum a, Num a) => a -> a
+factorial :: Int -> Int
 factorial n = product [1..n]
 
-isPythagorean :: (Eq a, Num a) => (a, a, a) -> Bool
+isPythagorean :: (Int, Int, Int) -> Bool
 isPythagorean (a, b, c) = square a + square b == square c
 
 -- Primes
 
-primes :: Integral a => [a]
+primes :: [Int]
 primes = 2 : 3 : filter isPrime potentialPrimes
 
-isPrime :: Integral a => a -> Bool
+isPrime :: Int -> Bool
 isPrime n | n <= 1 = False
 isPrime n | even n = False
 isPrime n | divides 3 n = False
@@ -37,18 +37,18 @@ isPrime n = not . any (flip divides n) $ divisors
     divisors = takeWhile (<= limit) potentialPrimes
     limit = truncate . sqrt . fromIntegral $ n
 
-potentialPrimes :: Integral a => [a]
+potentialPrimes :: [Int]
 potentialPrimes = 5 : 7 : map (+ 6) potentialPrimes
 
 -- Sequences
 
-fibonacci :: Integral a => [a]
+fibonacci :: [Int]
 fibonacci = 0 : 1 : zipWith (+) fibonacci (tail fibonacci)
 
-triangulars :: Integral a => [a]
+triangulars :: [Int]
 triangulars = scanl1 (+) [1..]
 
-divisors :: Integral a => a -> [a]
+divisors :: Int -> [Int]
 divisors n = 1 : n : othersUniq
   where
     limit = truncate . sqrt . fromIntegral $ n
@@ -59,5 +59,5 @@ divisors n = 1 : n : othersUniq
 
 -- Other
 
-digits :: Integral a => a -> [a]
+digits :: Int -> [Int]
 digits = map (`mod` 10) . takeWhile (> 0) . iterate (`div` 10)
