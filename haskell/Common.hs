@@ -35,7 +35,7 @@ isPrime :: Int -> Bool
 isPrime n | n <= 1 = False
 isPrime n | even n = False
 isPrime n | divides 3 n = False
-isPrime n = not . any (flip divides n) $ divisors
+isPrime n = not . any (`divides` n) $ divisors
   where
     divisors = takeWhile (<= limit) potentialPrimes
     limit = truncate . sqrt . fromIntegral $ n
@@ -55,12 +55,12 @@ divisors :: Int -> [Int]
 divisors n = 1 : n : othersUniq
   where
     limit = truncate . sqrt . fromIntegral $ n
-    lower = filter (flip divides n) [2..limit]
+    lower = filter (`divides` n) [2..limit]
     higher = map (div n) lower
     others = lower ++ higher
     othersUniq = if square limit == n then delete limit others else others
 
 -- Other
 
-digits :: Int -> [Int]
-digits = map (`mod` 10) . takeWhile (> 0) . iterate (`div` 10)
+digits :: Integral a => a -> [Int]
+digits = map (fromIntegral . flip rem 10) . takeWhile (> 0) . iterate (`div` 10)
