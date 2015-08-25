@@ -1,7 +1,7 @@
 -- Copyright 2015 Mitchell Kember. Subject to the MIT License.
 
 module Common
-( square, divides, factorial, isPythagorean
+( square, divides, factorial, combinations, isPythagorean
 , primes, isPrime
 , fibonacci, triangulars, divisors
 , digits
@@ -17,8 +17,11 @@ square x = x * x
 divides :: Int -> Int -> Bool
 divides a b = b `rem` a == 0
 
-factorial :: Int -> Int
+factorial :: Integral a => a -> a
 factorial n = product [1..n]
+
+combinations :: Integral a => a -> a -> a
+combinations n k = product [k-n+1..k] `div` factorial n
 
 isPythagorean :: (Int, Int, Int) -> Bool
 isPythagorean (a, b, c) = square a + square b == square c
