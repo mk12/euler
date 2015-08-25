@@ -7,5 +7,6 @@ module Problem01 where
 import Common (divides)
 
 solve :: Int
-solve = sum . takeWhile (< 1000) . filter divisible3or5 $ [1..]
-  where divisible3or5 x = divides 3 x || divides 5 x
+solve = sum . filter divisibleBy3or5 $ [1..999]
+  where
+    divisibleBy3or5 x = divides 3 x || divides 5 x

@@ -33,11 +33,12 @@ grid =
     ]
 
 cell :: Coord -> Maybe Int
-cell (x, y) | inBounds = Just $ row !! x
+cell (x, y)
+    | inBounds = Just $ row !! x
+    | otherwise = Nothing
   where
     row = grid !! y
     inBounds = x >= 0 && y >= 0 && y < length grid && x < length row
-cell _ = Nothing
 
 move :: Coord -> Coord -> Coord
 move (x, y) (dx, dy) = (x + dx, y + dy)
