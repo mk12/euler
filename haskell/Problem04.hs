@@ -6,7 +6,7 @@ module Problem04 where
 
 import Common (digits)
 
-isPalindrome :: Int -> Bool
+isPalindrome :: Integral a => a -> Bool
 isPalindrome n = ds == reverse ds where ds = digits n
 
 solve :: Int
