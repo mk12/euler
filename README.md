@@ -1,26 +1,32 @@
 # Project Euler
 
-These are my solutions to the [Project Euler][1] problems, written in Rust, Julia, and Clojure.
+These are my solutions to the [Project Euler][1] problems, written in Haskell, Clojure, Julia, and Rust.
 
 [1]: http://projecteuler.net
 
 ## Compiling
 
-### Rust
+### Haskell
 
-Compile [test.rs](rust/test.rs) to get the `test` binary. Make sure to enable optimizations with `-O`. To keep the binaries small, enable dynamic linking with `-C prefer-dynamic`.
+Compile with `ghc Test -O` and then run the `Test` binary.
+
+### Clojure
+
+I use [lein-bin](https://github.com/Raynes/lein-bin) to produce the binary for the Clojure solutions. Run `lein bin` in the  Clojure project folder, and then execute `target/test`. Or just run the `solve` functions in the REPL, if you prefer.
 
 ### Julia
 
 Invoke the test program with `julia test.jl args`. When testing solutions, [test.jl](julia/test.jl) will execute the `solve` function twice and timed the second time to avoid including JIT compilation time in the benchmark. This will make testing feel slower, so make sure you pay attention to the numbers.
 
-### Clojure
+### Rust
 
-I use [lein-bin](https://github.com/Raynes/lein-bin) to produce the binary for the Clojure solutions. Just run `lein bin` in the  Clojure project folder, and then execute `target/test`. Or just run the `solve` functions in the REPL, if you prefer.
+Compile [test.rs](rust/test.rs) to get the `test` binary. Make sure to enable optimizations with `-O`. To keep the binaries small, enable dynamic linking with `-C prefer-dynamic`.
+
+_(Note: the Rust solutions use outdated syntax and no longer compile with the latest compiler.)_
 
 ## Usage
 
-Run the `test` binary with the `-h` option to see its usage message:
+Run the test program with the `-h` option to see its usage message:
 
 	$ ./test -h
 	usage: test [ -h | problem_number]
@@ -46,7 +52,7 @@ Provide an integer argument to test a specific solution:
 	$ ./test abc
 	error: abc: not a uint
 
-I've tried to make the testing programs consistent for all three languages, but there are a few minor variations.
+I've tried to make the testing programs consistent for all three languages, but there are a few variations.
 
 ## License
 
