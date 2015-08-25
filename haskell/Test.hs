@@ -18,6 +18,7 @@ import Problem13
 import Problem14
 import Problem15
 import Problem16
+import Problem17
 
 import Control.Monad (filterM)
 import System.Environment (getArgs)
@@ -30,14 +31,15 @@ answers :: [Int]
 answers =
     [ 233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 23514624000
     , 31875000, 142913828922, 70600674, 76576500, 5537376230, 837799
-    , 137846528820, 1366 ]
+    , 137846528820, 1366, 21124 ]
 
 results :: [Int]
 results =
     [ Problem01.solve, Problem02.solve, Problem03.solve, Problem04.solve
     , Problem05.solve, Problem06.solve, Problem07.solve, Problem08.solve
     , Problem09.solve, Problem10.solve, Problem11.solve, Problem12.solve
-    , Problem13.solve, Problem14.solve, Problem15.solve, Problem16.solve ]
+    , Problem13.solve, Problem14.solve, Problem15.solve, Problem16.solve
+    , Problem17.solve ]
 
 usage :: String
 usage = "usage: test [ -h | problem_number ]"
