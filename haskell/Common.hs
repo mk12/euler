@@ -4,31 +4,31 @@ module Common
 ( square, divides, factorial, isPythagorean
 , primes, isPrime
 , fibonacci, triangulars, divisors
-, digits, groupings
+, digits
 ) where
 
 import Data.List (delete)
 
 -- Algebra
 
-square :: Int -> Int
+square :: Num a => a -> a
 square x = x * x
 
-divides :: Int -> Int -> Bool
+divides :: Integral a => a -> a -> Bool
 divides a b = b `rem` a == 0
 
-factorial :: Int -> Int
+factorial :: (Enum a, Num a) => a -> a
 factorial n = product [1..n]
 
-isPythagorean :: (Int, Int, Int) -> Bool
+isPythagorean :: (Eq a, Num a) => (a, a, a) -> Bool
 isPythagorean (a, b, c) = square a + square b == square c
 
 -- Primes
 
-primes :: [Int]
+primes :: Integral a => [a]
 primes = 2 : 3 : filter isPrime potentialPrimes
 
-isPrime :: Int -> Bool
+isPrime :: Integral a => a -> Bool
 isPrime n | n <= 1 = False
 isPrime n | even n = False
 isPrime n | divides 3 n = False
@@ -37,18 +37,18 @@ isPrime n = not . any (flip divides n) $ divisors
     divisors = takeWhile (<= limit) potentialPrimes
     limit = truncate . sqrt . fromIntegral $ n
 
-potentialPrimes :: [Int]
+potentialPrimes :: Integral a => [a]
 potentialPrimes = 5 : 7 : map (+ 6) potentialPrimes
 
 -- Sequences
 
-fibonacci :: [Int]
+fibonacci :: Integral a => [a]
 fibonacci = 0 : 1 : zipWith (+) fibonacci (tail fibonacci)
 
-triangulars :: [Int]
+triangulars :: Integral a => [a]
 triangulars = scanl1 (+) [1..]
 
-divisors :: Int -> [Int]
+divisors :: Integral a => a -> [a]
 divisors n = 1 : n : othersUniq
   where
     limit = truncate . sqrt . fromIntegral $ n
@@ -59,9 +59,5 @@ divisors n = 1 : n : othersUniq
 
 -- Other
 
-digits :: Int -> [Int]
+digits :: Integral a => a -> [a]
 digits = map (`mod` 10) . takeWhile (> 0) . iterate (`div` 10)
-
-groupings :: Int -> [a] -> [[a]]
-groupings n xs = map (take n . flip drop xs) [0 .. length xs - n]
-
