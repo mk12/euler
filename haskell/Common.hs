@@ -3,7 +3,7 @@
 module Common
 ( square, divides, factorial, combinations, isPythagorean
 , primes, isPrime
-, fibonacci, triangulars, divisors
+, fibonacci, triangulars, properDivisors, divisors
 , digits
 ) where
 
@@ -51,14 +51,18 @@ fibonacci = 0 : 1 : zipWith (+) fibonacci (tail fibonacci)
 triangulars :: [Int]
 triangulars = scanl1 (+) [1..]
 
-divisors :: Int -> [Int]
-divisors n = 1 : n : othersUniq
+properDivisors :: Int -> [Int]
+properDivisors 1 = []
+properDivisors n = 1 : unique
   where
     limit = truncate . sqrt . fromIntegral $ n
     lower = filter (`divides` n) [2..limit]
     higher = map (div n) lower
-    others = lower ++ higher
-    othersUniq = if square limit == n then delete limit others else others
+    both = lower ++ higher
+    unique = if square limit == n then delete limit both else both
+
+divisors :: Int -> [Int]
+divisors n = n : properDivisors n
 
 -- Other
 
