@@ -4,9 +4,10 @@ module Common
 ( square, divides, factorial, combinations, isPythagorean
 , primes, isPrime
 , fibonacci, triangulars, properDivisors, divisors
-, digits
+, digits, memoize
 ) where
 
+import Data.Array (array, (!))
 import Data.List (delete)
 
 -- Algebra
@@ -68,3 +69,10 @@ divisors n = n : properDivisors n
 
 digits :: Integral a => a -> [Int]
 digits = map (fromIntegral . flip rem 10) . takeWhile (> 0) . iterate (`div` 10)
+
+memoize :: (Int, Int) -> (Int -> a) -> Int -> a
+memoize bounds@(lo, hi) f n
+    | n >= lo && n <= hi = memo ! n
+    | otherwise = f n
+  where
+    memo = array bounds [(n, f n) | n <- [lo..hi]]
