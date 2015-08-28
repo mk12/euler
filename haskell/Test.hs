@@ -23,6 +23,7 @@ import Problem18
 import Problem19
 import Problem20
 import Problem21
+import Problem22
 
 import Control.Monad (filterM)
 import System.Environment (getArgs)
@@ -35,7 +36,7 @@ answers :: [Int]
 answers =
     [ 233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 23514624000
     , 31875000, 142913828922, 70600674, 76576500, 5537376230, 837799
-    , 137846528820, 1366, 21124, 1074, 171, 648, 31626
+    , 137846528820, 1366, 21124, 1074, 171, 648, 31626, 871198282
     ]
 
 results :: [Int]
@@ -45,7 +46,7 @@ results =
     , Problem09.solve, Problem10.solve, Problem11.solve, Problem12.solve
     , Problem13.solve, Problem14.solve, Problem15.solve, Problem16.solve
     , Problem17.solve, Problem18.solve, Problem19.solve, Problem20.solve
-    , Problem21.solve
+    , Problem21.solve, Problem22.solve
     ]
 
 usage :: String
