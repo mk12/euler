@@ -4,7 +4,7 @@ module Common
 ( square, divides, factorial, combinations, isPythagorean
 , primes, isPrime
 , fibonacci, triangulars, properDivisors, divisors
-, digits, memoize
+, digits, undigits, memoize
 ) where
 
 import Data.Array (array, (!))
@@ -69,6 +69,9 @@ divisors n = n : properDivisors n
 
 digits :: Integral a => a -> [Int]
 digits = map (fromIntegral . flip rem 10) . takeWhile (> 0) . iterate (`div` 10)
+
+undigits :: [Int] -> Int
+undigits = foldl1 addDigit where addDigit total d = total * 10 + d
 
 memoize :: (Int, Int) -> (Int -> a) -> Int -> a
 memoize bounds@(lo, hi) f = dispatch
