@@ -4,10 +4,7 @@
 
 module Problem14 where
 
-import Common (memoize)
-
-import Data.List (maximumBy)
-import Data.Ord (comparing)
+import Common (maximumOn, memoize)
 
 limit :: Int
 limit = 999999
@@ -21,4 +18,4 @@ collatzLen = memoize (1, limit) $ go 1
         next = if even n then n `div` 2 else 3 * n + 1
 
 solve :: Int
-solve = maximumBy (comparing collatzLen) [1..limit]
+solve = maximumOn collatzLen [1..limit]

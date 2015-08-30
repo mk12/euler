@@ -5,7 +5,7 @@ module Common
 , primes, isPrime
 , fibonacci, triangulars, properDivisors, divisors
 , numDigits, digits, undigits
-, memoize
+, maximumOn, memoize
 ) where
 
 import Data.Array (array, (!))
@@ -78,6 +78,16 @@ undigits :: [Int] -> Int
 undigits = foldl1 addDigit where addDigit total d = total * 10 + d
 
 -- Other
+
+maximumOn :: (a -> Int) -> [a] -> a
+maximumOn _ [] = error "Common.maximumOn: empty list"
+maximumOn f (x:xs) = fst . foldl go (x, f x) $ xs
+  where
+    go pair x
+        | fx > snd pair = (x, fx)
+        | otherwise = pair
+      where
+        fx = f x
 
 memoize :: (Int, Int) -> (Int -> a) -> Int -> a
 memoize bounds@(lo, hi) f = dispatch
