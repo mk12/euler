@@ -4,7 +4,8 @@ module Common
 ( square, divides, factorial, combinations, isPythagorean
 , primes, isPrime
 , fibonacci, triangulars, properDivisors, divisors
-, digits, undigits, memoize
+, numDigits, digits, undigits
+, memoize
 ) where
 
 import Data.Array (array, (!))
@@ -65,13 +66,18 @@ properDivisors n = 1 : unique
 divisors :: Int -> [Int]
 divisors n = n : properDivisors n
 
--- Other
+-- Digits
+
+numDigits :: Integral a => a -> Int
+numDigits = length . takeWhile (/= 0) . iterate (`div` 10)
 
 digits :: Integral a => a -> [Int]
 digits = map (fromIntegral . flip rem 10) . takeWhile (> 0) . iterate (`div` 10)
 
 undigits :: [Int] -> Int
 undigits = foldl1 addDigit where addDigit total d = total * 10 + d
+
+-- Other
 
 memoize :: (Int, Int) -> (Int -> a) -> Int -> a
 memoize bounds@(lo, hi) f = dispatch

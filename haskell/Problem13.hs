@@ -4,6 +4,8 @@
 
 module Problem13 where
 
+import Common (numDigits)
+
 series :: [Integer]
 series =
     [ 37107287533902102798797998220837590246510135740250
@@ -112,5 +114,4 @@ solve :: Int
 solve = fromIntegral first10
   where
     total = sum series
-    exponent = ceiling $ logBase 10 (fromIntegral total) - 10
-    first10 = total `div` 10^exponent
+    first10 = total `div` 10^(numDigits total - 10)
