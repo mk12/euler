@@ -4,21 +4,21 @@
 
 module Problem14 where
 
-import Data.Array (array, (!))
+import Common (memoize)
+
 import Data.List (maximumBy)
 import Data.Ord (comparing)
 
+limit :: Int
+limit = 999999
+
 collatzLen :: Int -> Int
-collatzLen = (memo !)
+collatzLen = memoize (1, limit) $ go 1
   where
-    limit = 1000000
-    memo = array (1, limit) [(n, go n 1) | n <- [1..limit]]
-    go 1 count = count
-    go n count
-        | next <= limit = count + collatzLen next
-        | otherwise = go next (count + 1)
+    go count 1 = count
+    go count n = count + collatzLen next
       where
         next = if even n then n `div` 2 else 3 * n + 1
 
 solve :: Int
-solve = maximumBy (comparing collatzLen) [1..999999]
+solve = maximumBy (comparing collatzLen) [1..limit]
