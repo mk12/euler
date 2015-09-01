@@ -9,11 +9,10 @@ import Data.List (sort)
 import System.IO.Unsafe (unsafePerformIO)
 
 totalScore :: [String] -> Int
-totalScore = sum . map mult . zip [1..] . map nameValue . sort
+totalScore = sum . zipWith (*) [1..] . map nameValue . sort
   where
     nameValue = sum . map charValue
     charValue c = ord c - ord 'A' + 1
-    mult = uncurry (*)
 
 solve :: Int
 solve = totalScore names
