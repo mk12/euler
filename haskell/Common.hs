@@ -9,7 +9,7 @@ module Common
 ) where
 
 import Data.Array (array, (!))
-import Data.List (delete)
+import Data.List (delete, foldl', foldl1')
 
 -- Algebra
 
@@ -75,13 +75,13 @@ digits :: Integral a => a -> [Int]
 digits = map (fromIntegral . flip rem 10) . takeWhile (> 0) . iterate (`div` 10)
 
 undigits :: [Int] -> Int
-undigits = foldl1 addDigit where addDigit total d = total * 10 + d
+undigits = foldl1' addDigit where addDigit total d = total * 10 + d
 
 -- Other
 
 maximumOn :: (a -> Int) -> [a] -> a
 maximumOn _ [] = error "Common.maximumOn: empty list"
-maximumOn f (x:xs) = fst . foldl go (x, f x) $ xs
+maximumOn f (x:xs) = fst . foldl' go (x, f x) $ xs
   where
     go pair x
         | fx > snd pair = (x, fx)
