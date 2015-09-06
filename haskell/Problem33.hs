@@ -7,24 +7,25 @@ module Problem33 where
 import Common (digits, undigits)
 
 import Data.List (intersect, (\\))
-import Data.Ratio (denominator, (%))
+import Data.Maybe (mapMaybe)
+import Data.Ratio (Ratio, denominator, (%))
 
-isCurious :: (Int, Int) -> Bool
-isCurious (a, b) = not trivial && not invalid && a % b == a' % b'
+curious :: (Int, Int) -> Maybe (Ratio Int)
+curious (a, b)
+    | not trivial && not invalid && r == r' = Just r'
+    | otherwise = Nothing
   where
     da = digits a
     db = digits b
     common = intersect da db
     trivial = null common || common == [0]
-    da' = da \\ common
-    db' = db \\ common
-    invalid = null da' || null db' || db' == [0]
-    a' = undigits da'
-    b' = undigits db'
+    a' = undigits $ da \\ common
+    b' = undigits $ db \\ common
+    invalid = a' == 0 || b' == 0
+    r = a % b
+    r' = a' % b'
 
 solve :: Int
-solve = denominator . product . map ratio . filter isCurious $ pairs
+solve = denominator . product . mapMaybe curious $ pairs
   where
-    pairs = [(a, b) | a <- range, b <- range, a < b]
-    range = [10..99]
-    ratio = uncurry (%)
+    pairs = [(a, b) | b <- [10..99], a <- [10..b-1]]
