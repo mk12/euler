@@ -4,7 +4,7 @@
 
 module Problem13 where
 
-import Common (numDigits)
+import Common (takeDigits)
 
 series :: [Integer]
 series =
@@ -111,7 +111,4 @@ series =
     ]
 
 solve :: Int
-solve = fromIntegral first10
-  where
-    total = sum series
-    first10 = total `div` 10^(numDigits total - 10)
+solve = takeDigits 10 . sum $ series

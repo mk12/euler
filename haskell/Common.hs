@@ -4,8 +4,9 @@ module Common
 ( square, divides, factorial, combinations, isPythagorean
 , primes, isPrime
 , fibonacci, triangulars, properDivisors, divisors
-, numDigits, digits, undigits
-, rotate, maximumOn, memoize
+, digits, undigits, numDigits, takeDigits
+, rotate, isPalindrome, maximumOn
+, memoize
 ) where
 
 import Data.Array (array, (!))
@@ -68,19 +69,26 @@ divisors n = n : properDivisors n
 
 -- Digits
 
+digits :: Integral a => a -> [Int]
+digits 0 = []
+digits n = fromIntegral r : digits q where (q, r) = divMod n 10
+
+undigits :: [Int] -> Int
+undigits = foldr addDigit 0 where addDigit d total = d + total * 10
+
 numDigits :: Integral a => a -> Int
 numDigits = length . takeWhile (/= 0) . iterate (`div` 10)
 
-digits :: Integral a => a -> [Int]
-digits = map (fromIntegral . flip rem 10) . takeWhile (> 0) . iterate (`div` 10)
+takeDigits :: Integral a => Int -> a -> Int
+takeDigits n x = fromIntegral $ x `div` 10^(numDigits x - n)
 
-undigits :: [Int] -> Int
-undigits = foldl1' addDigit where addDigit total d = total * 10 + d
-
--- Other
+-- Lists
 
 rotate :: Int -> [a] -> [a]
 rotate n xs = take (length xs) . drop n . cycle $ xs
+
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome xs = take h xs == take h (reverse xs) where h = length xs `div` 2
 
 maximumOn :: (a -> Int) -> [a] -> a
 maximumOn _ [] = error "Common.maximumOn: empty list"
@@ -91,6 +99,8 @@ maximumOn f (x:xs) = fst . foldl' go (x, f x) $ xs
         | otherwise = pair
       where
         fx = f x
+
+-- Performance
 
 memoize :: (Int, Int) -> (Int -> a) -> Int -> a
 memoize bounds@(lo, hi) f = dispatch

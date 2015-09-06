@@ -9,5 +9,5 @@ import Common (isPrime, primes, rotate, digits, undigits)
 solve :: Int
 solve = length . filter works . takeWhile (< 1000000) $ primes
   where
-    works = all (isPrime . undigits) . rotations . reverse . digits
+    works = all (isPrime . undigits) . rotations . digits
     rotations xs = map (flip rotate xs) [1 .. length xs - 1]

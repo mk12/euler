@@ -4,12 +4,9 @@
 
 module Problem04 where
 
-import Common (digits)
-
-isPalindrome :: Int -> Bool
-isPalindrome n = ds == reverse ds where ds = digits n
+import Common (isPalindrome, digits)
 
 solve :: Int
-solve = maximum . filter isPalindrome $ products
+solve = maximum . filter (isPalindrome . digits) $ products
   where
     products = [x * y | x <- [100..999], y <- [x..999]]

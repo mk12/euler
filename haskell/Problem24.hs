@@ -15,4 +15,4 @@ lexPermutations xs = concatMap go xs
     go x = map (x :) . lexPermutations . delete x $ xs
 
 solve :: Int
-solve = undigits $ lexPermutations [0..9] !! 999999
+solve = undigits . reverse $ lexPermutations [0..9] !! 999999
