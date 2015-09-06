@@ -5,7 +5,7 @@ module Common
 , primes, isPrime
 , fibonacci, triangulars, properDivisors, divisors
 , numDigits, digits, undigits
-, maximumOn, memoize
+, rotate, maximumOn, memoize
 ) where
 
 import Data.Array (array, (!))
@@ -78,6 +78,9 @@ undigits :: [Int] -> Int
 undigits = foldl1' addDigit where addDigit total d = total * 10 + d
 
 -- Other
+
+rotate :: Int -> [a] -> [a]
+rotate n xs = take (length xs) . drop n . cycle $ xs
 
 maximumOn :: (a -> Int) -> [a] -> a
 maximumOn _ [] = error "Common.maximumOn: empty list"
