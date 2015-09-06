@@ -17,7 +17,7 @@ square :: Int -> Int
 square x = x * x
 
 divides :: Int -> Int -> Bool
-divides a b = b `rem` a == 0
+divides a b = b `mod` a == 0
 
 factorial :: Integral a => a -> a
 factorial n = product [1..n]

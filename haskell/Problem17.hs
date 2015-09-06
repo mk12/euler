@@ -7,9 +7,9 @@ module Problem17 where
 letters :: Int -> Int
 letters n
     | n >= 0 && n <= 19 = upTo19 n
-    | n <= 99 = tens (n `div` 10) + letters (n `rem` 10)
-    | n <= 999 && n `rem` 100 == 0 = letters (n `div` 100) + hundred
-    | n <= 999 = letters (n `div` 100) + hundred + and + letters (n `rem` 100)
+    | n <= 99 = tens (n `div` 10) + letters (n `mod` 10)
+    | n <= 999 && n `mod` 100 == 0 = letters (n `div` 100) + hundred
+    | n <= 999 = letters (n `div` 100) + hundred + and + letters (n `mod` 100)
     | n == 1000 = letters 1 + thousand
     | otherwise = 0
   where

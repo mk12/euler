@@ -16,7 +16,7 @@ cycleLen n = go 1 []
         Just index -> index + 1
         Nothing -> go x' $ x:seen
       where
-        x' = (x * 10) `rem` n
+        x' = (x * 10) `mod` n
 
 solve :: Int
 solve = maximumOn cycleLen [1..999]
