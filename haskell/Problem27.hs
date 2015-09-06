@@ -12,7 +12,8 @@ numQuadPrimes (a, b) = length . takeWhile works $ [0..]
     works n = isPrime $ n^2 + a * n + b
 
 solve :: Int
-solve = mult . maximumOn numQuadPrimes $ [(a, b) | a <- range, b <- range]
+solve = mult . maximumOn numQuadPrimes $ pairs
   where
+    pairs = [(a, b) | a <- range, b <- range]
     range = [-999..999]
     mult = uncurry (*)
