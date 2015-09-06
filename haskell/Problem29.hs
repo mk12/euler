@@ -7,4 +7,4 @@ module Problem29 where
 import Data.List (nub)
 
 solve :: Int
-solve = length . nub $ [a^b | a <- range, b <- range] where range = [2..100]
+solve = length . nub $ [a ^ b | a <- range, b <- range] where range = [2..100]

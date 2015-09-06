@@ -10,7 +10,7 @@ import Data.List (find)
 import Data.Maybe (fromJust)
 
 divisibleTo19 :: Int -> Bool
-divisibleTo19 n = all (flip divides n) [11..19]
+divisibleTo19 n = all (`divides` n) [11..19]
 
 solve :: Int
 solve = fromJust . find divisibleTo19 $ [20, 40..]
