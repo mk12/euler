@@ -35,10 +35,10 @@ primes :: [Int]
 primes = 2 : 3 : filter isPrime potentialPrimes
 
 isPrime :: Int -> Bool
-isPrime n | n <= 1 = False
-isPrime n | even n = False
-isPrime n | divides 3 n = False
-isPrime n = not . any (`divides` n) $ divisors
+isPrime n
+    | n == 2 || n == 3 = True
+    | n <= 1 || even n || divides 3 n = False
+    | otherwise = not . any (`divides` n) $ divisors
   where
     divisors = takeWhile (<= limit) potentialPrimes
     limit = truncate . sqrt . fromIntegral $ n
