@@ -5,7 +5,7 @@ module Common
 , primes, isPrime
 , fibonacci, triangulars, properDivisors, divisors
 , digits, undigits, numDigits, takeDigits
-, rotate, isPalindrome, maximumOn
+, rotate, interleave, isPalindrome, maximumOn
 , memoize
 ) where
 
@@ -86,6 +86,10 @@ takeDigits n x = fromIntegral $ x `div` 10^(numDigits x - n)
 
 rotate :: Int -> [a] -> [a]
 rotate n xs = take (length xs) . drop n . cycle $ xs
+
+interleave :: [a] -> [a] -> [a]
+interleave [] ys = ys
+interleave (x:xs) ys = x : interleave ys xs
 
 isPalindrome :: Eq a => [a] -> Bool
 isPalindrome xs = take h xs == take h (reverse xs) where h = length xs `div` 2

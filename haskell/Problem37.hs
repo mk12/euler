@@ -4,14 +4,16 @@
 
 module Problem37 where
 
-import Common (numDigits, isPrime, primes, memoize)
+import Common (interleave, numDigits, isPrime, primes)
+
+truncations :: Int -> [Int]
+truncations n = interleave left right
+  where
+    left = order . map (n `mod`) . iterate (`div` 10) $ 10 ^ (numDigits n - 1)
+    right = order . tail . iterate (`div` 10) $ n
+    order = reverse . takeWhile (/= 0)
 
 solve :: Int
 solve = sum . take 11 . filter works . dropWhile (<= 10) $ primes
   where
-    ip = memoize (0,1000) isPrime
-    works n = all ip (leftTruncs n) && all ip (rightTruncs n)
-    rightTruncs = reverse . takeWhile (/= 0) . tail . iterate (`div` 10)
-    leftTruncs n = reverse . takeWhile (/= 0) . map (n `mod`) . iterate (`div` 10) $ m
-      where
-        m = 10 ^ (numDigits n - 1)
+    works = all isPrime . truncations
