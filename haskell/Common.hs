@@ -4,7 +4,7 @@ module Common
 ( square, divides, factorial, combinations, isPythagorean
 , primes, isPrime
 , fibonacci, triangulars, properDivisors, divisors
-, digits, undigits, numDigits, takeDigits, pandigital
+, digits, undigits, numDigits, catDigits, takeDigits, pandigital
 , rotate, interleave, isPalindrome, maximumOn
 , memoize
 ) where
@@ -78,6 +78,9 @@ undigits = foldr addDigit 0 where addDigit d total = d + total * 10
 
 numDigits :: Integral a => a -> Int
 numDigits = length . takeWhile (/= 0) . iterate (`div` 10)
+
+catDigits :: [Int] -> Int
+catDigits = foldl' cat 0 where cat n x = n * 10^(numDigits x) + x
 
 takeDigits :: Integral a => Int -> a -> Int
 takeDigits n x = fromIntegral $ x `div` 10^(numDigits x - n)
