@@ -4,7 +4,7 @@
 
 module Problem32 where
 
-import Common (digits)
+import Common (pandigital)
 
 import Control.Monad (guard)
 import Data.List (nub, sort)
@@ -19,6 +19,5 @@ solve = sum . nub $ do
     b <- [1..bLimit]
     let c = a * b
     guard $ c <= limit
-    let allDigits = concatMap digits [a, b, c]
-    guard $ sort allDigits == [1..9]
+    guard $ pandigital [a, b, c]
     return c

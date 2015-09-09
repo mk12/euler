@@ -4,13 +4,13 @@ module Common
 ( square, divides, factorial, combinations, isPythagorean
 , primes, isPrime
 , fibonacci, triangulars, properDivisors, divisors
-, digits, undigits, numDigits, takeDigits
+, digits, undigits, numDigits, takeDigits, pandigital
 , rotate, interleave, isPalindrome, maximumOn
 , memoize
 ) where
 
 import Data.Array (array, (!))
-import Data.List (delete, foldl', foldl1')
+import Data.List (delete, foldl', foldl1', sort)
 
 -- Algebra
 
@@ -81,6 +81,9 @@ numDigits = length . takeWhile (/= 0) . iterate (`div` 10)
 
 takeDigits :: Integral a => Int -> a -> Int
 takeDigits n x = fromIntegral $ x `div` 10^(numDigits x - n)
+
+pandigital :: [Int] -> Bool
+pandigital = (== [1..9]) . sort . concatMap digits
 
 -- Lists
 
