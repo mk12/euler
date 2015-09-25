@@ -6,11 +6,15 @@ module Common
 , fibonacci, triangulars, properDivisors, divisors
 , digits, undigits, numDigits, catDigits, takeDigits, pandigital
 , rotate, interleave, isPalindrome, maximumOn
+, wordValue
 , memoize
+, loadList
 ) where
 
 import Data.Array (array, (!))
+import Data.Char (ord)
 import Data.List (delete, foldl', foldl1', sort)
+import System.IO.Unsafe (unsafePerformIO)
 
 -- Algebra
 
@@ -110,6 +114,11 @@ maximumOn f (x:xs) = fst . foldl' go (x, f x) $ xs
       where
         fx = f x
 
+-- Text
+
+wordValue :: String -> Int
+wordValue = sum . map charValue where charValue c = ord c - ord 'A' + 1
+
 -- Performance
 
 memoize :: (Int, Int) -> (Int -> a) -> Int -> a
@@ -119,3 +128,11 @@ memoize bounds@(lo, hi) f = dispatch
     dispatch n
         | n >= lo && n <= hi = memo ! n
         | otherwise = f n
+
+-- IO
+
+loadList :: Read a => String -> [a]
+loadList = read . brackets . unsafePerformIO . readFile . relativePath
+  where
+    relativePath name = "../data/" ++ name ++ ".txt"
+    brackets s = "[" ++ s ++ "]"

@@ -4,19 +4,9 @@
 
 module Problem22 where
 
-import Data.Char (ord)
-import Data.List (sort)
-import System.IO.Unsafe (unsafePerformIO)
+import Common (loadList, wordValue)
 
-totalScore :: [String] -> Int
-totalScore = sum . zipWith (*) [1..] . map nameValue . sort
-  where
-    nameValue = sum . map charValue
-    charValue c = ord c - ord 'A' + 1
+import Data.List (sort)
 
 solve :: Int
-solve = totalScore names
-  where
-    names = read . brackets . unsafePerformIO . readFile $ filename
-    filename = "../data/p022_names.txt"
-    brackets s = "[" ++ s ++ "]"
+solve = sum . zipWith (*) [1..] . map wordValue . sort . loadList $ "p022_names"
