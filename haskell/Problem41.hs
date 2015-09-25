@@ -9,7 +9,7 @@ import Common (digits, isPrime)
 import Data.List (sort)
 
 solve :: Int
-solve =  maximum . filter works . takeWhile (<= 7654321) $ potentials
+solve = maximum . filter works . takeWhile (<= 7654321) $ potentials
   where
     potentials = 7000001 : 7000003 : map (+ 6) potentials
     works n = sort (digits n) == [1..7] && isPrime n
