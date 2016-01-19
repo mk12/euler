@@ -51,9 +51,10 @@ const unsigned char digits[n_digits] = {
 long solve() {
 	long largest = 0;
 	for (long i = 0; i < n_digits - 12; ++i) {
-		long n = digits[i] * digits[i+1] * digits[i+2] * digits[i+3]
-			* digits[i+4] * digits[i+5] * digits[i+6] * digits[i+7]
-			* digits[i+8] * digits[i+9] * digits[i+10] * digits[i+11];
+		long n = 1;
+		for (long j = i; j < i + 13; ++j) {
+			n *= digits[j];
+		}
 		if (n > largest) {
 			largest = n;
 		}
