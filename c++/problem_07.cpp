@@ -7,12 +7,22 @@
 namespace problem_07 {
 
 long solve() {
-	long n = 1;
-	long count = 0;
-	while (count < 10001) {
-		++n;
-		if (common::is_prime(n)) {
+	long n = 5;
+	long count = 3;
+	for (;;) {
+		n += 2;
+		if (common::is_prime_fast(n)) {
 			++count;
+			if (count == 10001) {
+				break;
+			}
+		}
+		n += 4;
+		if (common::is_prime_fast(n)) {
+			++count;
+			if (count == 10001) {
+				break;
+			}
 		}
 	}
 	return n;

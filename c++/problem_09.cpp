@@ -1,8 +1,6 @@
 // Copyright 2016 Mitchell Kember. Subject to the MIT License.
-// Project Euler: Problem 8
+// Project Euler: Problem 9
 // Special Pythagorean triplet
-
-#include "common.hpp"
 
 namespace problem_09 {
 

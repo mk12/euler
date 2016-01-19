@@ -47,7 +47,10 @@ bool is_prime(long n) {
 	if (n % 2 == 0 || n % 3 == 0) {
 		return false;
 	}
+	return is_prime_fast(n);
+}
 
+bool is_prime_fast(long n) {
 	long max = static_cast<long>(sqrt(n));
 	long div = 5;
 	while (div <= max) {

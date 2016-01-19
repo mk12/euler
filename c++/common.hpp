@@ -7,5 +7,6 @@ namespace common {
 long n_digits(long n);
 bool is_palindrome(long n);
 bool is_prime(long n);
+bool is_prime_fast(long n);
 
 } // namespace common
