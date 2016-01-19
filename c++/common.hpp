@@ -6,5 +6,6 @@ namespace common {
 
 int n_digits(int n);
 bool is_palindrome(int n);
+bool is_prime(int n);
 
 } // namespace common

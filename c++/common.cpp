@@ -2,6 +2,7 @@
 
 #include "common.hpp"
 
+#include <cmath>
 #include <vector>
 
 namespace common {
@@ -32,6 +33,28 @@ bool is_palindrome(int n) {
 			return false;
 		}
 		n /= 10;
+	}
+	return true;
+}
+
+bool is_prime(int n) {
+	if (n <= 1) {
+		return false;
+	}
+	if (n <= 3) {
+		return true;
+	}
+	if (n % 2 == 0 || n % 3 == 0) {
+		return false;
+	}
+
+	int max = static_cast<int>(sqrt(n));
+	int div = 5;
+	while (div <= max) {
+		if (n % div == 0 || n % (div + 2) == 0) {
+			return false;
+		}
+		div += 6;
 	}
 	return true;
 }

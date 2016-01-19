@@ -5,9 +5,9 @@
 #include <cstdlib>
 #include <cstring>
 
-const int n_solved = 4;
+const int n_solved = 8;
 const int answers[n_solved] = {
-	233168, 4613732, 6857, 906609
+	233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 23514624000
 };
 
 typedef int (*Solver)();
@@ -16,12 +16,20 @@ namespace problem_01 { int solve(); }
 namespace problem_02 { int solve(); }
 namespace problem_03 { int solve(); }
 namespace problem_04 { int solve(); }
+namespace problem_05 { int solve(); }
+namespace problem_06 { int solve(); }
+namespace problem_07 { int solve(); }
+namespace problem_08 { int solve(); }
 
 const Solver solvers[n_solved] = {
 	problem_01::solve,
 	problem_02::solve,
 	problem_03::solve,
-	problem_04::solve
+	problem_04::solve,
+	problem_05::solve,
+	problem_06::solve,
+	problem_07::solve,
+	problem_08::solve
 };
 
 bool has_solution(int n) {
