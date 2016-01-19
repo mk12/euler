@@ -6,11 +6,11 @@
 
 namespace problem_04 {
 
-int solve() {
-	int largest = 0;
-	for (int i = 100; i < 1000; ++i) {
-		for (int j = 100; j < 1000; ++j) {
-			int prod = i * j;
+long solve() {
+	long largest = 0;
+	for (long i = 100; i < 1000; ++i) {
+		for (long j = 100; j < 1000; ++j) {
+			long prod = i * j;
 			if (common::is_palindrome(prod) && prod > largest) {
 				largest = prod;
 			}

@@ -7,8 +7,8 @@
 
 namespace common {
 
-int n_digits(int n) {
-	int count = 0;
+long n_digits(long n) {
+	long count = 0;
 	while (n > 0) {
 		n /= 10;
 		++count;
@@ -16,11 +16,11 @@ int n_digits(int n) {
 	return count;
 }
 
-bool is_palindrome(int n) {
-	typedef std::vector<int>::size_type sz_t;
+bool is_palindrome(long n) {
+	typedef std::vector<long>::size_type sz_t;
 	sz_t count = static_cast<sz_t>(n_digits(n));
 	sz_t half = count / 2;
-	std::vector<int> digits(half);
+	std::vector<long> digits(half);
 	for (sz_t i = 0; i < half; ++i) {
 		digits[i] = n % 10;
 		n /= 10;
@@ -37,7 +37,7 @@ bool is_palindrome(int n) {
 	return true;
 }
 
-bool is_prime(int n) {
+bool is_prime(long n) {
 	if (n <= 1) {
 		return false;
 	}
@@ -48,8 +48,8 @@ bool is_prime(int n) {
 		return false;
 	}
 
-	int max = static_cast<int>(sqrt(n));
-	int div = 5;
+	long max = static_cast<long>(sqrt(n));
+	long div = 5;
 	while (div <= max) {
 		if (n % div == 0 || n % (div + 2) == 0) {
 			return false;

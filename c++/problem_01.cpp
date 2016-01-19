@@ -4,12 +4,12 @@
 
 namespace problem_01 {
 
-int arith_sum(int d) {
-	int n = 999 / d;
+long arith_sum(long d) {
+	long n = 999 / d;
 	return d * n * (n + 1) / 2;
 }
 
-int solve() {
+long solve() {
 	return arith_sum(3) + arith_sum(5) - arith_sum(15);
 }
 

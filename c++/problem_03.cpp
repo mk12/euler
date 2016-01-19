@@ -4,7 +4,7 @@
 
 namespace problem_03 {
 
-int solve() {
+long solve() {
 	long n = 600851475143;
 	long factor = 1;
 	while (n != 1) {
@@ -13,7 +13,7 @@ int solve() {
 			n /= factor;
 		}
 	}
-	return static_cast<int>(factor);
+	return static_cast<long>(factor);
 }
 
 } // namespace problem_03

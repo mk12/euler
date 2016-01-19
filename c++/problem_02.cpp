@@ -4,15 +4,15 @@
 
 namespace problem_02 {
 
-int solve() {
-	int a = 0;
-	int b = 1;
-	int sum = 0;
+long solve() {
+	long a = 0;
+	long b = 1;
+	long sum = 0;
 	while (a <= 4000000) {
 		sum += a;
 		a += b;
 		b += a;
-		int old_a = a;
+		long old_a = a;
 		a = b;
 		b += old_a;
 	}

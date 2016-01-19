@@ -6,20 +6,20 @@
 #include <cstring>
 
 const int n_solved = 8;
-const int answers[n_solved] = {
+const long answers[n_solved] = {
 	233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 23514624000
 };
 
-typedef int (*Solver)();
+typedef long (*Solver)();
 
-namespace problem_01 { int solve(); }
-namespace problem_02 { int solve(); }
-namespace problem_03 { int solve(); }
-namespace problem_04 { int solve(); }
-namespace problem_05 { int solve(); }
-namespace problem_06 { int solve(); }
-namespace problem_07 { int solve(); }
-namespace problem_08 { int solve(); }
+namespace problem_01 { long solve(); }
+namespace problem_02 { long solve(); }
+namespace problem_03 { long solve(); }
+namespace problem_04 { long solve(); }
+namespace problem_05 { long solve(); }
+namespace problem_06 { long solve(); }
+namespace problem_07 { long solve(); }
+namespace problem_08 { long solve(); }
 
 const Solver solvers[n_solved] = {
 	problem_01::solve,
@@ -56,12 +56,12 @@ const char* status_str(bool success) {
 bool test(int n) {
 	int index = n - 1;
 	auto start_t = std::chrono::high_resolution_clock::now();
-	int result = solvers[index]();
+	long result = solvers[index]();
 	auto end_t = std::chrono::high_resolution_clock::now();
 	double elapsed_s = std::chrono::duration<double>(end_t - start_t).count();
 	bool success = result == answers[index];
 	const char* msg = status_str(success);
-	printf("%02d: %12d ... %4s (%g s)\n", n, result, msg, elapsed_s);
+	printf("%02d: %12ld ... %4s (%g s)\n", n, result, msg, elapsed_s);
 	return success;
 }
 

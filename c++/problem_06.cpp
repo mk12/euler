@@ -4,10 +4,10 @@
 
 namespace problem_06 {
 
-int solve() {
-	int sum = 0;
-	int sq_sum = 0;
-	for (int i = 1; i <= 100; ++i) {
+long solve() {
+	long sum = 0;
+	long sq_sum = 0;
+	for (long i = 1; i <= 100; ++i) {
 		sum += i;
 		sq_sum += i * i;
 	}

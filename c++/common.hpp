@@ -4,8 +4,8 @@
 
 namespace common {
 
-int n_digits(int n);
-bool is_palindrome(int n);
-bool is_prime(int n);
+long n_digits(long n);
+bool is_palindrome(long n);
+bool is_prime(long n);
 
 } // namespace common

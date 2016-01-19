@@ -4,7 +4,7 @@
 
 namespace problem_08 {
 
-const int n_digits = 1000;
+const long n_digits = 1000;
 const unsigned char digits[n_digits] = {
 	7, 3, 1, 6, 7, 1, 7, 6, 5, 3, 1, 3, 3, 0, 6, 2, 4, 9, 1, 9, 2, 2, 5, 1, 1,
 	9, 6, 7, 4, 4, 2, 6, 5, 7, 4, 7, 4, 2, 3, 5, 5, 3, 4, 9, 1, 9, 4, 9, 3, 4,
@@ -48,10 +48,10 @@ const unsigned char digits[n_digits] = {
 	3, 6, 0, 0, 8, 2, 3, 2, 5, 7, 5, 3, 0, 4, 2, 0, 7, 5, 2, 9, 6, 3, 4, 5, 0
 };
 
-int solve() {
-	int largest = 0;
-	for (int i = 0; i < n_digits - 12; ++i) {
-		int n = digits[i] * digits[i+1] * digits[i+2] * digits[i+3]
+long solve() {
+	long largest = 0;
+	for (long i = 0; i < n_digits - 12; ++i) {
+		long n = digits[i] * digits[i+1] * digits[i+2] * digits[i+3]
 			* digits[i+4] * digits[i+5] * digits[i+6] * digits[i+7]
 			* digits[i+8] * digits[i+9] * digits[i+10] * digits[i+11];
 		if (n > largest) {

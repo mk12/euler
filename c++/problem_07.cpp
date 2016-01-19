@@ -6,9 +6,9 @@
 
 namespace problem_07 {
 
-int solve() {
-	int n = 1;
-	int count = 0;
+long solve() {
+	long n = 1;
+	long count = 0;
 	while (count < 10001) {
 		++n;
 		if (common::is_prime(n)) {
