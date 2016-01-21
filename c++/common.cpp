@@ -2,6 +2,7 @@
 
 #include "common.hpp"
 
+#include <cassert>
 #include <cmath>
 #include <vector>
 
@@ -51,6 +52,9 @@ bool is_prime(long n) {
 }
 
 bool is_prime_fast(long n) {
+	assert(n > 3);
+	assert(n % 2 != 0 && n % 3 != 0);
+
 	long max = static_cast<long>(sqrt(n));
 	long div = 5;
 	while (div <= max) {
@@ -60,6 +64,24 @@ bool is_prime_fast(long n) {
 		div += 6;
 	}
 	return true;
+}
+
+long n_divisors(long n) {
+	assert(n >= 1);
+
+	if (n == 1) {
+		return 1;
+	}
+	long max = static_cast<long>(sqrt(n));
+	long count = max * max == n ? 1 : 2;
+	long div = 2;
+	while (div < max) {
+		if (n % div == 0) {
+			count += 2;
+		}
+		++div;
+	}
+	return count;
 }
 
 } // namespace common
