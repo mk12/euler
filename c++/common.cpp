@@ -84,4 +84,113 @@ long n_divisors(long n) {
 	return count;
 }
 
+const long Big::BIG_DIGIT_MAX = 999999999999999999;
+
+Big::Big(long n) : _negative(n < 0), _big_digits({n}) {
+	assert(std::abs(n) <= BIG_DIGIT_MAX);
+}
+
+Big::Big(const std::string& str) : _big_digits() {
+	long n = 0;
+	for (char c : str) {
+		*this *= 10;
+		*this += static_cast<long>(c - '0');
+	}
+}
+
+Big& Big::operator+=(const Big& rhs) {
+	return *this;
+}
+
+Big& Big::operator+=(long rhs) {
+	if (rhs < 0) {
+		return *this -= -rhs;
+	}
+
+	long room = BIG_DIGIT_MAX - _big_digits[0];
+	if (rhs > room) {
+		if (_big_digits.size() > 1) {
+			++_big_digits[1];
+		} else {
+			_big_digits.push_back(1);
+		}
+		_big_digits[0] -= BIG_DIGIT_MAX - rhs + 1;
+	} else {
+		_big_digits[0] += room;
+	}
+	return *this;
+}
+
+Big& Big::operator-=(const Big& rhs) {
+	return *this;
+}
+
+Big& Big::operator-=(long rhs) {
+	return *this;
+}
+
+Big& Big::operator*=(const Big& rhs) {
+	return *this;
+}
+
+Big& Big::operator*=(long rhs) {
+	return *this;
+}
+
+Big& Big::operator/=(const Big& rhs) {
+	return *this;
+}
+
+Big& Big::operator/=(long rhs) {
+	return *this;
+}
+
+Big operator+(const Big& lhs, const Big& rhs) {
+	return Big(0);
+}
+
+Big operator+(const Big& lhs, long rhs) {
+	return Big(0);
+}
+
+Big operator+(long lhs, const Big& rhs) {
+	return Big(0);
+}
+
+Big operator-(const Big& lhs, const Big& rhs) {
+	return Big(0);
+}
+
+Big operator-(const Big& lhs, long rhs) {
+	return Big(0);
+}
+
+Big operator-(long lhs, const Big& rhs) {
+	return Big(0);
+}
+
+Big operator*(const Big& lhs, const Big& rhs) {
+	return Big(0);
+}
+
+Big operator*(const Big& lhs, long rhs) {
+	return Big(0);
+}
+
+Big operator*(long lhs, const Big& rhs) {
+	return Big(0);
+}
+
+Big operator/(const Big& lhs, const Big& rhs) {
+	return Big(0);
+}
+
+Big operator/(const Big& lhs, long rhs) {
+	return Big(0);
+}
+
+Big operator/(long lhs, const Big& rhs) {
+	return Big(0);
+}
+
 } // namespace common
