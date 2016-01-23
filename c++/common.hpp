@@ -13,61 +13,90 @@ bool is_prime(long n);
 bool is_prime_fast(long n);
 long n_divisors(long n);
 
-class Big {
+class big {
 public:
-	explicit Big(long n);
-	explicit Big(const std::string& str);
+	explicit big(long n);
+	explicit big(const std::string& str);
 
 	long truncate() const;
 	bool negative() const;
 
-	class Iterator;
-	Iterator begin() const;
-	Iterator end() const;
+	class iterator;
+	class reverse_iterator;
+	iterator begin() const;
+	iterator end() const;
+	reverse_iterator rbegin() const;
+	reverse_iterator rend() const;
 
-	Big& operator+=(const Big& rhs);
-	Big& operator+=(long rhs);
-	Big& operator-=(const Big& rhs);
-	Big& operator-=(long rhs);
-	Big& operator*=(const Big& rhs);
-	Big& operator*=(long rhs);
-	Big& operator/=(const Big& rhs);
-	Big& operator/=(long rhs);
+	big& operator+=(const big& rhs);
+	big& operator+=(long rhs);
+	big& operator-=(const big& rhs);
+	big& operator-=(long rhs);
+	big& operator*=(const big& rhs);
+	big& operator*=(long rhs);
+	big& operator/=(const big& rhs);
+	big& operator/=(long rhs);
 
-	friend Big operator+(const Big& lhs, const Big& rhs);
-	friend Big operator+(const Big& lhs, long rhs);
-	friend Big operator+(long lhs, const Big& rhs);
-	friend Big operator-(const Big& lhs, const Big& rhs);
-	friend Big operator-(const Big& lhs, long rhs);
-	friend Big operator-(long lhs, const Big& rhs);
-	friend Big operator*(const Big& lhs, const Big& rhs);
-	friend Big operator*(const Big& lhs, const Big& rhs);
-	friend Big operator*(const Big& lhs, long rhs);
-	friend Big operator/(long lhs, const Big& rhs);
-	friend Big operator/(const Big& lhs, long rhs);
-	friend Big operator/(long lhs, const Big& rhs);
+	friend big operator+(const big& lhs, const big& rhs);
+	friend big operator+(const big& lhs, long rhs);
+	friend big operator+(long lhs, const big& rhs);
+	friend big operator-(const big& lhs, const big& rhs);
+	friend big operator-(const big& lhs, long rhs);
+	friend big operator-(long lhs, const big& rhs);
+	friend big operator*(const big& lhs, const big& rhs);
+	friend big operator*(const big& lhs, const big& rhs);
+	friend big operator*(const big& lhs, long rhs);
+	friend big operator/(long lhs, const big& rhs);
+	friend big operator/(const big& lhs, long rhs);
+	friend big operator/(long lhs, const big& rhs);
 
-	friend class Iterator;
-	class Iterator :
+	friend class iterator;
+	class iterator :
 		public std::iterator<std::forward_iterator_tag, const long> {
 	public:
-		Iterator(const Big& big, long index, long digit);
-		Iterator(const Iterator& rhs);
-		~Iterator();
+		iterator(const big& n, long index, long digit);
+		iterator(const iterator& rhs);
+		~iterator();
 
-		Iterator& operator++();
-		Iterator operator++(int);
+		iterator& operator++();
+		iterator operator++(int);
 		long operator*() const;
 
-		bool operator==(const Iterator& rhs) const;
-		bool operator!=(const Iterator& rhs) const;
+		bool operator==(const iterator& rhs) const;
+		bool operator!=(const iterator& rhs) const;
 
 	private:
-		Iterator& operator=(const Iterator&);
+		iterator& operator=(const iterator&);
 
-		const Big& _big;
+		const big& _big;
 		long _index;
 		long _digit;
+	};
+
+	friend class reverse_iterator;
+	class reverse_iterator :
+		public std::iterator<std::forward_iterator_tag, const long> {
+	public:
+		reverse_iterator(const big& n, long index, long digit);
+		reverse_iterator(const reverse_iterator& rhs);
+		~reverse_iterator();
+
+		reverse_iterator& operator++();
+		reverse_iterator operator++(int);
+		long operator*() const;
+
+		bool operator==(const reverse_iterator& rhs) const;
+		bool operator!=(const reverse_iterator& rhs) const;
+
+	private:
+		reverse_iterator& operator=(const iterator&);
+
+		static long initial_divisor(long digit);
+
+		const big& _big;
+		long _index;
+		long _digit;
+		long _divisor;
 	};
 
 private:

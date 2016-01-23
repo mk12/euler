@@ -111,22 +111,19 @@ const char *strings[n_strings] = {
 };
 
 long solve() {
-	common::Big num(0);
+	common::big num(0);
 	for (long i = 0; i < n_strings; ++i) {
-		num += common::Big(strings[i]);
+		num += common::big(strings[i]);
 	}
 
 	long result = 0;
-	long mult = 1;
-	for (long digit : num) {
-		result += mult * digit;
-		if (mult <= 1000000000) {
-			result += mult * digit;
-			mult *= 10;
-		} else {
-			result /= 10;
-		}
+	auto it = num.rbegin();
+	for (int i = 0; i < 10; ++i) {
+		result *= 10;
+		result += *it;
+		++it;
 	}
+	return result;
 }
 
 } // namespace problem_13

@@ -84,40 +84,49 @@ long n_divisors(long n) {
 	return count;
 }
 
-const long Big::DIGIT_MAX = 999999999999999999;
+const long big::DIGIT_MAX = 999999999999999999;
 
-Big::Big(long n) : _negative(n < 0), _digits({n}) {
+big::big(long n) : _negative(n < 0), _digits({n}) {
 	assert(std::abs(n) <= BIG_DIGIT_MAX);
 }
 
-Big::Big(const std::string& str) : _digits(1) {
+big::big(const std::string& str) : _digits(1) {
 	for (char c : str) {
 		*this *= 10;
 		*this += static_cast<long>(c - '0');
 	}
 }
 
-long Big::truncate() const {
+long big::truncate() const {
 	return _digits[0];
 }
 
-bool Big::negative() const {
+bool big::negative() const {
 	return _negative;
 }
 
-Big::Iterator Big::begin() const {
-	return Iterator(*this, 0, _digits[0]);
+big::iterator big::begin() const {
+	return iterator(*this, 0, _digits[0]);
 }
 
-Big::Iterator Big::end() const {
-	return Iterator(*this, static_cast<long>(_digits.size()), 0);
+big::iterator big::end() const {
+	return iterator(*this, static_cast<long>(_digits.size()), 0);
 }
 
-Big& Big::operator+=(const Big& rhs) {
+big::reverse_iterator big::rbegin() const {
+	const long index = static_cast<long>(_digits.size() - 1);
+	return reverse_iterator(*this, index, _digits[index]);
+}
+
+big::reverse_iterator big::rend() const {
+	return reverse_iterator(*this, -1, 0);
+}
+
+big& big::operator+=(const big& rhs) {
 	return *this;
 }
 
-Big& Big::operator+=(long rhs) {
+big& big::operator+=(long rhs) {
 	if (rhs < 0) {
 		return *this -= -rhs;
 	}
@@ -136,87 +145,87 @@ Big& Big::operator+=(long rhs) {
 	return *this;
 }
 
-Big& Big::operator-=(const Big& rhs) {
+big& big::operator-=(const big& rhs) {
 	return *this;
 }
 
-Big& Big::operator-=(long rhs) {
+big& big::operator-=(long rhs) {
 	return *this;
 }
 
-Big& Big::operator*=(const Big& rhs) {
+big& big::operator*=(const big& rhs) {
 	return *this;
 }
 
-Big& Big::operator*=(long rhs) {
+big& big::operator*=(long rhs) {
 	return *this;
 }
 
-Big& Big::operator/=(const Big& rhs) {
+big& big::operator/=(const big& rhs) {
 	return *this;
 }
 
-Big& Big::operator/=(long rhs) {
+big& big::operator/=(long rhs) {
 	return *this;
 }
 
-Big operator+(const Big& lhs, const Big& rhs) {
-	return Big(0);
+big operator+(const big& lhs, const big& rhs) {
+	return big(0);
 }
 
-Big operator+(const Big& lhs, long rhs) {
-	return Big(0);
+big operator+(const big& lhs, long rhs) {
+	return big(0);
 }
 
-Big operator+(long lhs, const Big& rhs) {
-	return Big(0);
+big operator+(long lhs, const big& rhs) {
+	return big(0);
 }
 
-Big operator-(const Big& lhs, const Big& rhs) {
-	return Big(0);
+big operator-(const big& lhs, const big& rhs) {
+	return big(0);
 }
 
-Big operator-(const Big& lhs, long rhs) {
-	return Big(0);
+big operator-(const big& lhs, long rhs) {
+	return big(0);
 }
 
-Big operator-(long lhs, const Big& rhs) {
-	return Big(0);
+big operator-(long lhs, const big& rhs) {
+	return big(0);
 }
 
-Big operator*(const Big& lhs, const Big& rhs) {
-	return Big(0);
+big operator*(const big& lhs, const big& rhs) {
+	return big(0);
 }
 
-Big operator*(const Big& lhs, long rhs) {
-	return Big(0);
+big operator*(const big& lhs, long rhs) {
+	return big(0);
 }
 
-Big operator*(long lhs, const Big& rhs) {
-	return Big(0);
+big operator*(long lhs, const big& rhs) {
+	return big(0);
 }
 
-Big operator/(const Big& lhs, const Big& rhs) {
-	return Big(0);
+big operator/(const big& lhs, const big& rhs) {
+	return big(0);
 }
 
-Big operator/(const Big& lhs, long rhs) {
-	return Big(0);
+big operator/(const big& lhs, long rhs) {
+	return big(0);
 }
 
-Big operator/(long lhs, const Big& rhs) {
-	return Big(0);
+big operator/(long lhs, const big& rhs) {
+	return big(0);
 }
 
-Big::Iterator::Iterator(const Big& big, long index, long digit)
-	: _big(big), _index(0), _digit(digit) {}
+big::iterator::iterator(const big& n, long index, long digit)
+	: _big(n), _index(index), _digit(digit) {}
 
-Big::Iterator::Iterator(const Iterator& rhs)
+big::iterator::iterator(const iterator& rhs)
 	: _big(rhs._big), _index(rhs._index), _digit(rhs._digit) {}
 
-Big::Iterator::~Iterator() {}
+big::iterator::~iterator() {}
 
-Big::Iterator& Big::Iterator::operator++() {
+big::iterator& big::iterator::operator++() {
 	const long size = static_cast<long>(_big._digits.size());
 	assert(_index < size);
 
@@ -232,23 +241,78 @@ Big::Iterator& Big::Iterator::operator++() {
 	}
 }
 
-Big::Iterator Big::Iterator::operator++(int) {
-	Iterator temp(*this);
+big::iterator big::iterator::operator++(int) {
+	iterator temp(*this);
 	++*this;
 	return temp;
 }
 
-bool Big::Iterator::operator==(const Iterator& rhs) const {
+bool big::iterator::operator==(const iterator& rhs) const {
 	return &_big == &rhs._big && _index == rhs._index && _digit == rhs._digit;
 }
 
-bool Big::Iterator::operator!=(const Iterator& rhs) const {
+bool big::iterator::operator!=(const iterator& rhs) const {
 	return !(*this == rhs);
 }
 
-long Big::Iterator::operator*() const {
+long big::iterator::operator*() const {
 	assert(_index < _big._digits.size());
 	return _digit % 10;
+}
+
+big::reverse_iterator::reverse_iterator(const big& n, long index, long digit)
+	: _big(n), _index(0), _digit(digit), _divisor(initial_divisor(digit)) {}
+
+big::reverse_iterator::reverse_iterator(const reverse_iterator& rhs)
+	: _big(rhs._big), _index(rhs._index), _digit(rhs._digit),
+	_divisor(rhs._divisor) {}
+
+big::reverse_iterator::~reverse_iterator() {}
+
+big::reverse_iterator& big::reverse_iterator::operator++() {
+	assert(_index >= 0);
+
+	if (_divisor == 1) {
+		--_index;
+		if (_index == -1) {
+			_digit = 0;
+		} else {
+			_digit = _big._digits[_index];
+			_divisor = initial_divisor(_digit);
+		}
+	} else {
+		_divisor /= 10;
+	}
+}
+
+big::reverse_iterator big::reverse_iterator::operator++(int) {
+	reverse_iterator temp(*this);
+	++*this;
+	return temp;
+}
+
+bool big::reverse_iterator::operator==(const reverse_iterator& rhs) const {
+	return &_big == &rhs._big && _index == rhs._index && _digit == rhs._digit
+		&& _divisor == rhs._divisor;
+}
+
+bool big::reverse_iterator::operator!=(const reverse_iterator& rhs) const {
+	return !(*this == rhs);
+}
+
+long big::reverse_iterator::operator*() const {
+	assert(_index > 0);
+	return _digit / _divisor;
+}
+
+long big::reverse_iterator::initial_divisor(long digit)
+{
+	long divisor = 1;
+	while (digit > 10) {
+		digit /= 10;
+		divisor *= 10;
+	}
+	return divisor;
 }
 
 } // namespace common
