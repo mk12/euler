@@ -5,10 +5,10 @@
 #include <cstdlib>
 #include <cstring>
 
-const int n_solved = 13;
+const int n_solved = 14;
 const long answers[n_solved] = {
 	233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 23514624000,
-	31875000, 142913828922, 70600674, 76576500, 5537376230
+	31875000, 142913828922, 70600674, 76576500, 5537376230, 837799
 };
 
 typedef long (*Solver)();
@@ -26,6 +26,7 @@ namespace problem_10 { long solve(); }
 namespace problem_11 { long solve(); }
 namespace problem_12 { long solve(); }
 namespace problem_13 { long solve(); }
+namespace problem_14 { long solve(); }
 
 const Solver solvers[n_solved] = {
 	problem_01::solve,
@@ -40,7 +41,8 @@ const Solver solvers[n_solved] = {
 	problem_10::solve,
 	problem_11::solve,
 	problem_12::solve,
-	problem_13::solve
+	problem_13::solve,
+	problem_14::solve
 };
 
 bool has_solution(int n) {
