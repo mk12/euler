@@ -4,10 +4,12 @@
 
 #include "common.hpp"
 
+#include <gmpxx.h>
+
 namespace problem_13 {
 
 const long n_strings = 100;
-const char *strings[n_strings] = {
+const char *const strings[n_strings] = {
 	"37107287533902102798797998220837590246510135740250",
 	"46376937677490009712648124896970078050417018260538",
 	"74324986199524741059474233309513058123726617309629",
@@ -111,8 +113,23 @@ const char *strings[n_strings] = {
 };
 
 long solve() {
-	long result = 0;
-	return result;
+	mpz_class n;
+	for (long i = 0; i < n_strings; ++i) {
+		n += mpz_class(strings[i]);
+	}
+
+	// According to the mpz_sizeinbase documentation, the result "will be either
+	// exact or 1 too big", so let's be careful and assume it's 1 too big.
+	unsigned long size = mpz_sizeinbase(n.get_mpz_t(), 10) - 1;
+	mpz_class divisor;
+	mpz_ui_pow_ui(divisor.get_mpz_t(), 10, size - 10);
+	n /= divisor;
+
+	// Divide by 10 again if our assumption was wrong.
+	if (n > 9999999999) {
+		n /= 10;
+	}
+	return n.get_si();
 }
 
 } // namespace problem_13
