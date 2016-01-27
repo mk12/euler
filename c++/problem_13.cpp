@@ -111,18 +111,7 @@ const char *strings[n_strings] = {
 };
 
 long solve() {
-	common::big num(0);
-	for (long i = 0; i < n_strings; ++i) {
-		num += common::big(strings[i]);
-	}
-
 	long result = 0;
-	auto it = num.rbegin();
-	for (int i = 0; i < 10; ++i) {
-		result *= 10;
-		result += *it;
-		++it;
-	}
 	return result;
 }
 
