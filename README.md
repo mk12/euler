@@ -1,10 +1,17 @@
 # Project Euler
 
-These are my solutions to the [Project Euler][1] problems, written in Haskell, Clojure, Julia, and Rust.
+These are my solutions to the [Project Euler][1] problems, written in C++, Haskell, Clojure, Julia, and Rust.
 
 [1]: http://projecteuler.net
 
 ## Compiling
+
+### C++
+
+Compile with `build.sh` and then run the `test` binary. Make sure you have [GMP][1] installed in `/usr` or `/usr/local`. The GMP header files and library files are necessary for the build. With [Homebrew][2] on OS X, this can be accomplished by running `brew install gmp`.
+
+[1]: https://gmplib.org
+[2]: http://brew.sh
 
 ### Haskell
 
@@ -16,7 +23,7 @@ I use [lein-bin](https://github.com/Raynes/lein-bin) to produce the binary for t
 
 ### Julia
 
-Invoke the test program with `julia test.jl args`. When testing solutions, [test.jl](julia/test.jl) will execute the `solve` function twice and timed the second time to avoid including JIT compilation time in the benchmark. This will make testing feel slower, so make sure you pay attention to the numbers.
+Invoke the test program with `julia test.jl args`. When testing solutions, [test.jl](julia/test.jl) will execute the `solve` function twice and timed the second time to avoid including JIT compilation time in the benchmark. This will make testing feel slower, so pay attention to the numbers.
 
 ### Rust
 
