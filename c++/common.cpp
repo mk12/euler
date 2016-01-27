@@ -85,4 +85,17 @@ long n_divisors(long n) {
 	return count;
 }
 
+long combinations(long n, long k) {
+	if (k > n - k) {
+		k = n - k;
+	}
+
+	long result = 1;
+	for (long i = 0; i < k; ++i) {
+		result *= n - i;
+		result /= i + 1;
+	}
+	return result;
+}
+
 } // namespace common
