@@ -9,6 +9,10 @@
 
 namespace common {
 
+long max(long a, long b) {
+	return a > b ? a : b;
+}
+
 long n_digits(long n) {
 	long count = 0;
 	while (n > 0) {

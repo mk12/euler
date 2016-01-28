@@ -7,6 +7,7 @@
 
 namespace common {
 
+long max(long a, long b);
 long n_digits(long n);
 bool is_palindrome(long n);
 bool is_prime(long n);

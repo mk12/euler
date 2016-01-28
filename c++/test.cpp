@@ -5,11 +5,11 @@
 #include <cstdlib>
 #include <cstring>
 
-constexpr int n_solved = 17;
+constexpr int n_solved = 18;
 constexpr long answers[n_solved] = {
 	233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 23514624000,
 	31875000, 142913828922, 70600674, 76576500, 5537376230, 837799,
-	137846528820, 1366, 21124
+	137846528820, 1366, 21124, 1074
 };
 
 typedef long (*Solver)();
@@ -31,6 +31,7 @@ namespace problem_14 { long solve(); }
 namespace problem_15 { long solve(); }
 namespace problem_16 { long solve(); }
 namespace problem_17 { long solve(); }
+namespace problem_18 { long solve(); }
 
 constexpr Solver solvers[n_solved] = {
 	problem_01::solve,
@@ -49,7 +50,8 @@ constexpr Solver solvers[n_solved] = {
 	problem_14::solve,
 	problem_15::solve,
 	problem_16::solve,
-	problem_17::solve
+	problem_17::solve,
+	problem_18::solve
 };
 
 bool has_solution(int n) {
