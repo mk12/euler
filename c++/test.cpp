@@ -5,11 +5,11 @@
 #include <cstdlib>
 #include <cstring>
 
-const int n_solved = 16;
-const long answers[n_solved] = {
+constexpr int n_solved = 17;
+constexpr long answers[n_solved] = {
 	233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 23514624000,
 	31875000, 142913828922, 70600674, 76576500, 5537376230, 837799,
-	137846528820, 1366
+	137846528820, 1366, 21124
 };
 
 typedef long (*Solver)();
@@ -30,8 +30,9 @@ namespace problem_13 { long solve(); }
 namespace problem_14 { long solve(); }
 namespace problem_15 { long solve(); }
 namespace problem_16 { long solve(); }
+namespace problem_17 { long solve(); }
 
-const Solver solvers[n_solved] = {
+constexpr Solver solvers[n_solved] = {
 	problem_01::solve,
 	problem_02::solve,
 	problem_03::solve,
@@ -47,7 +48,8 @@ const Solver solvers[n_solved] = {
 	problem_13::solve,
 	problem_14::solve,
 	problem_15::solve,
-	problem_16::solve
+	problem_16::solve,
+	problem_17::solve
 };
 
 bool has_solution(int n) {
@@ -55,7 +57,7 @@ bool has_solution(int n) {
 }
 
 void print_usage(bool error) {
-	static const char *usage = "usage: test [ -h | problem_number]\n";
+	static constexpr const char* usage = "usage: test [ -h | problem_number]\n";
 	if (error) {
 		fputs(usage, stderr);
 	} else {
@@ -63,11 +65,11 @@ void print_usage(bool error) {
 	}
 }
 
-void print_error(const char *context, const char *msg) {
+void print_error(const char* context, const char* msg) {
 	fprintf(stderr, "error: %s: %s\n", context, msg);
 }
 
-const char* status_str(bool success) {
+constexpr const char* status_str(bool success) {
 	return success ? "ok" : "FAIL";
 }
 

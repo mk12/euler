@@ -8,8 +8,8 @@
 
 namespace problem_13 {
 
-const long n_strings = 100;
-const char *const strings[n_strings] = {
+constexpr long n_strings = 100;
+constexpr const char* strings[n_strings] = {
 	"37107287533902102798797998220837590246510135740250",
 	"46376937677490009712648124896970078050417018260538",
 	"74324986199524741059474233309513058123726617309629",

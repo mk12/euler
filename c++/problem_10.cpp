@@ -9,7 +9,7 @@ namespace problem_10 {
 long solve() {
 	long sum = 2 + 3 + 5;
 	long n = 5;
-	const long max = 2000000;
+	constexpr long max = 2000000;
 
 	for (;;) {
 		n += 2;
