@@ -2,8 +2,6 @@
 
 #include "common.hpp"
 
-#include <gmpxx.h>
-
 #include <vector>
 
 #include <cassert>
@@ -103,6 +101,15 @@ long combinations(long n, long k) {
 		result /= i + 1;
 	}
 	return result;
+}
+
+long sum_of_digits(const mpz_class& n) {
+	std::string str = n.get_str();
+	long sum = 0;
+	for (char c : str) {
+		sum += c - '0';
+	}
+	return sum;
 }
 
 } // namespace common

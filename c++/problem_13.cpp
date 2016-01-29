@@ -113,7 +113,7 @@ constexpr const char* strings[n_strings] = {
 };
 
 long solve() {
-	mpz_class n;
+	mpz_class n(0);
 	for (long i = 0; i < n_strings; ++i) {
 		n += mpz_class(strings[i]);
 	}
