@@ -2,10 +2,13 @@
 
 #include "common.hpp"
 
+#include <gmpxx.h>
+
+#include <vector>
+
 #include <cassert>
 #include <cmath>
 #include <cstdio>
-#include <vector>
 
 namespace common {
 
