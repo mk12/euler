@@ -11,7 +11,7 @@ constexpr long month_lens[n_months] = {
 };
 
 bool days_in_month(long month, bool leap) {
-	return (leap && month == 1) ? 29 : month_lens[month];
+	return leap && month == 1 ? 29 : month_lens[month];
 }
 
 bool is_leap_year(long year) {

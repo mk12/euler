@@ -79,7 +79,7 @@ long n_divisors(long n) {
 		return 1;
 	}
 	long max = static_cast<long>(sqrt(n));
-	long count = max * max == n ? 1 : 2;
+	long count = max * max == n ? 3 : 2;
 	long div = 2;
 	while (div < max) {
 		if (n % div == 0) {
@@ -89,6 +89,26 @@ long n_divisors(long n) {
 	}
 	return count;
 }
+
+long sum_proper_divisors(long n) {
+	assert(n >= 1);
+
+	if (n == 1) {
+		return 0;
+	}
+	long max = static_cast<long>(sqrt(n));
+	long sum = max * max == n ? max + 1 : 1;
+	long div = 2;
+	while (div < max) {
+		if (n % div == 0) {
+			sum += div;
+			sum += n / div;
+		}
+		++div;
+	}
+	return sum;
+}
+
 
 long combinations(long n, long k) {
 	if (k > n - k) {
@@ -106,10 +126,21 @@ long combinations(long n, long k) {
 long sum_of_digits(const mpz_class& n) {
 	std::string str = n.get_str();
 	long sum = 0;
-	for (char c : str) {
+	for (const char c : str) {
 		sum += c - '0';
 	}
 	return sum;
+}
+
+std::vector<std::string> parse_words(const std::string& filename) {
+	const std::string path = "../data/" + filename;
+	std::ifstream fs(path);
+	std::string token;
+	std::vector<std::string> words;
+	while (std::getline(fs, token, ',')) {
+		words.push_back(token.substr(1, token.length() - 2));
+	}
+	return words;
 }
 
 } // namespace common
