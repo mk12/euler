@@ -10,7 +10,11 @@
 
 namespace common {
 
-long max(long a, long b) {
+long min(const long a, const long b) {
+	return a < b ? a : b;
+}
+
+long max(const long a, const long b) {
 	return a > b ? a : b;
 }
 
@@ -44,7 +48,7 @@ bool is_palindrome(long n) {
 	return true;
 }
 
-bool is_prime(long n) {
+bool is_prime(const long n) {
 	if (n <= 1) {
 		return false;
 	}
@@ -57,7 +61,7 @@ bool is_prime(long n) {
 	return is_prime_fast(n);
 }
 
-bool is_prime_fast(long n) {
+bool is_prime_fast(const long n) {
 	assert(n > 3);
 	assert(n % 2 != 0 && n % 3 != 0);
 
@@ -72,7 +76,7 @@ bool is_prime_fast(long n) {
 	return true;
 }
 
-long n_divisors(long n) {
+long n_divisors(const long n) {
 	assert(n >= 1);
 
 	if (n == 1) {
@@ -93,7 +97,7 @@ long n_divisors(long n) {
 	return count;
 }
 
-long sum_proper_divisors(long n) {
+long sum_proper_divisors(const long n) {
 	assert(n >= 1);
 
 	if (n == 1) {
@@ -116,13 +120,10 @@ long sum_proper_divisors(long n) {
 }
 
 
-long combinations(long n, long k) {
-	if (k > n - k) {
-		k = n - k;
-	}
-
+long combinations(const long n, const long k) {
+	const long m = min(k, n - k);
 	long result = 1;
-	for (long i = 0; i < k; ++i) {
+	for (long i = 0; i < m; ++i) {
 		result *= n - i;
 		result /= i + 1;
 	}

@@ -19,7 +19,7 @@ long solve() {
 
 	long total = 0;
 	for (sz_t i = 1; i < max; ++i) {
-		sz_t si = static_cast<sz_t>(sums[i]);
+		const sz_t si = static_cast<sz_t>(sums[i]);
 		if (i < si && si < max && static_cast<sz_t>(sums[si]) == i) {
 			total += i;
 			total += si;

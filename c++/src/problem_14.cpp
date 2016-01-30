@@ -21,7 +21,7 @@ long solve() {
 	long n = 0;
 	long max_len = 0;
 	for (long i = 1; i < 1000000; ++i) {
-		long len = collatz_len(i);
+		const long len = collatz_len(i);
 		if (len > max_len) {
 			n = i;
 			max_len = len;

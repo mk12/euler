@@ -6,7 +6,7 @@
 
 namespace problem_15 {
 
-long lattice_paths(long w, long h) {
+long lattice_paths(const long w, const long h) {
 	return common::combinations(w + h, w);
 }
 

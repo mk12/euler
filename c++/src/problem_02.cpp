@@ -12,7 +12,7 @@ long solve() {
 		sum += a;
 		a += b;
 		b += a;
-		long old_a = a;
+		const long old_a = a;
 		a = b;
 		b += old_a;
 	}

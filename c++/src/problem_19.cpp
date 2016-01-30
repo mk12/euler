@@ -10,11 +10,11 @@ constexpr long month_lens[n_months] = {
 	31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
 };
 
-bool days_in_month(long month, bool leap) {
+bool days_in_month(const long month, const bool leap) {
 	return leap && month == 1 ? 29 : month_lens[month];
 }
 
-bool is_leap_year(long year) {
+bool is_leap_year(const long year) {
 	return year % 400 == 0 || (year % 100 != 0 && year % 4 == 0);
 }
 
@@ -26,7 +26,7 @@ long solve() {
 	long count = 0;
 
 	for (long year = 1901; year <= 2000; ++year) {
-		bool leap = is_leap_year(year);
+		const bool leap = is_leap_year(year);
 		for (long month = 0; month < n_months; ++month) {
 			if (day % 7 == 0) {
 				++count;

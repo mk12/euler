@@ -25,13 +25,13 @@ constexpr long triangle[side_length][side_length] = {
 	{ 4, 62, 98, 27, 23,  9, 70, 98, 73, 93, 38, 53, 60,  4, 23}
 };
 
-long max_path_sum(long total, long i, long j) {
+long max_path_sum(const long total, const long i, const long j) {
 	if (i >= side_length) {
 		return total;
 	}
-	total += triangle[i][j];
-	const long left = max_path_sum(total, i+1, j);
-	const long right = max_path_sum(total, i+1, j+1);
+	const long new_total = total + triangle[i][j];
+	const long left = max_path_sum(new_total, i+1, j);
+	const long right = max_path_sum(new_total, i+1, j+1);
 	return common::max(left, right);
 }
 

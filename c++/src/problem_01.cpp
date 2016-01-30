@@ -4,7 +4,7 @@
 
 namespace problem_01 {
 
-long arith_sum(long d) {
+long arith_sum(const long d) {
 	const long n = 999 / d;
 	return d * n * (n + 1) / 2;
 }

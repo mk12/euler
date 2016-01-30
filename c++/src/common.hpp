@@ -10,6 +10,7 @@
 
 namespace common {
 
+long min(long a, long b);
 long max(long a, long b);
 long n_digits(long n);
 bool is_palindrome(long n);

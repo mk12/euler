@@ -6,12 +6,12 @@
 #include <cstdlib>
 #include <cstring>
 
-constexpr int n_solved = 25;
+constexpr int n_solved = 26;
 constexpr long answers[n_solved] = {
 	233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 23514624000,
 	31875000, 142913828922, 70600674, 76576500, 5537376230, 837799,
 	137846528820, 1366, 21124, 1074, 171, 648, 31626, 871198282, 4179871,
-	2783915460, 4782
+	2783915460, 4782, 983
 };
 
 typedef long (*Solver)();
@@ -41,6 +41,7 @@ namespace problem_22 { long solve(); }
 namespace problem_23 { long solve(); }
 namespace problem_24 { long solve(); }
 namespace problem_25 { long solve(); }
+namespace problem_26 { long solve(); }
 
 constexpr Solver solvers[n_solved] = {
 	problem_01::solve,
@@ -67,14 +68,15 @@ constexpr Solver solvers[n_solved] = {
 	problem_22::solve,
 	problem_23::solve,
 	problem_24::solve,
-	problem_25::solve
+	problem_25::solve,
+	problem_26::solve
 };
 
-bool has_solution(int n) {
+bool has_solution(const int n) {
 	return n >= 1 && n <= n_solved;
 }
 
-void print_usage(bool error) {
+void print_usage(const bool error) {
 	static constexpr const char* usage = "usage: test [ -h | problem_number]\n";
 	if (error) {
 		fputs(usage, stderr);
@@ -83,21 +85,22 @@ void print_usage(bool error) {
 	}
 }
 
-void print_error(const char* context, const char* msg) {
+void print_error(const char* const context, const char* const msg) {
 	fprintf(stderr, "error: %s: %s\n", context, msg);
 }
 
-constexpr const char* status_str(bool success) {
+constexpr const char* status_str(const bool success) {
 	return success ? "ok" : "FAIL";
 }
 
-bool test(int n) {
-	int index = n - 1;
-	auto start_t = std::chrono::high_resolution_clock::now();
-	long result = solvers[index]();
-	auto end_t = std::chrono::high_resolution_clock::now();
-	double elapsed_s = std::chrono::duration<double>(end_t - start_t).count();
-	bool success = result == answers[index];
+bool test(const int n) {
+	const int index = n - 1;
+	const auto start_t = std::chrono::high_resolution_clock::now();
+	const long result = solvers[index]();
+	const auto end_t = std::chrono::high_resolution_clock::now();
+	const double elapsed_s =
+		std::chrono::duration<double>(end_t - start_t).count();
+	const bool success = result == answers[index];
 	const char* msg = status_str(success);
 	printf("%02d: %12ld ... %4s (%g s)\n", n, result, msg, elapsed_s);
 	return success;
@@ -106,17 +109,16 @@ bool test(int n) {
 bool test_all() {
 	int passes = 0;
 	for (int i = 1; i <= n_solved; ++i) {
-		bool success = test(i);
-		passes += success ? 1 : 0;
+		passes += test(i) ? 1 : 0;
 	}
-	int fails = n_solved - passes;
-	bool success = fails == 0;
-	const char* msg = status_str(success);
+	const int fails = n_solved - passes;
+	const bool success = fails == 0;
+	const char* const msg = status_str(success);
 	printf("%s. %d passed; %d failed\n", msg, passes, fails);
 	return success;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
 	switch (argc) {
 	case 1:
 		return test_all() ? 0 : 1;
@@ -125,7 +127,7 @@ int main(int argc, char **argv) {
 			print_usage(false);
 			return 0;
 		}
-		char *temp;
+		char* temp;
 		int n = static_cast<int>(strtol(argv[1], &temp, 10));
 		if (temp == argv[1] || *temp != '\0') {
 			print_error(argv[1], "not an integer");
