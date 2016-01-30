@@ -79,13 +79,16 @@ long n_divisors(long n) {
 		return 1;
 	}
 	long max = static_cast<long>(sqrt(n));
-	long count = max * max == n ? 3 : 2;
+	long count = 2;
 	long div = 2;
-	while (div < max) {
+	while (div <= max) {
 		if (n % div == 0) {
 			count += 2;
 		}
 		++div;
+	}
+	if (max * max == n) {
+		--count;
 	}
 	return count;
 }
@@ -97,14 +100,17 @@ long sum_proper_divisors(long n) {
 		return 0;
 	}
 	long max = static_cast<long>(sqrt(n));
-	long sum = max * max == n ? max + 1 : 1;
+	long sum = 1;
 	long div = 2;
-	while (div < max) {
+	while (div <= max) {
 		if (n % div == 0) {
 			sum += div;
 			sum += n / div;
 		}
 		++div;
+	}
+	if (max * max == n) {
+		sum -= max;
 	}
 	return sum;
 }
