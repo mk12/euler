@@ -8,10 +8,11 @@ These are my solutions to the [Project Euler][1] problems, written in C++, Haske
 
 ### C++
 
-Compile with `build.sh` and then run the `test` binary. Make sure you have [GMP][1] installed in `/usr` or `/usr/local`. The GMP header files and library files are necessary for the build. With [Homebrew][2] on OS X, this can be accomplished by running `brew install gmp`.
+Compile with [Tup][1] and then run the `bin/test` binary. Make sure you have [GMP][2] installed in `/usr` or `/usr/local`. The GMP header files and library files are necessary for the build. With [Homebrew][3] on OS X, this can be accomplished by running `brew install gmp`.
 
-[1]: https://gmplib.org
-[2]: http://brew.sh
+[1]: http://gittup.org/tup/index.html
+[2]: https://gmplib.org
+[3]: http://brew.sh
 
 ### Haskell
 
