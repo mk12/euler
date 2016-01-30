@@ -1,0 +1,9 @@
+CXX = clang++
+OPTIONS = -std=c++14 -O3
+WARNINGS = -Weverything -pedantic -Wno-c++98-compat -Wno-missing-prototypes
+INCLUDE = -isystem /usr/local/include
+COMPILE = $(CXX) $(OPTIONS) $(WARNINGS) $(INCLUDE) -c
+LINK = $(CXX) -L /usr/local/lib -lgmpxx -lgmp
+
+: foreach src/*.cpp |> ^ CXX %f^ $(COMPILE) %f -o %o |> build/%B.o
+: build/*.o |> ^ Linking binary "test"^ $(LINK) %f -o %o |> bin/test
