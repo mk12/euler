@@ -76,6 +76,54 @@ bool is_prime_fast(const long n) {
 	return true;
 }
 
+long nth_prime(const long n) {
+	assert(n >= 4);
+
+	long p = 5;
+	long count = 3;
+	for (;;) {
+		p += 2;
+		if (is_prime_fast(p)) {
+			++count;
+			if (count == n) {
+				break;
+			}
+		}
+		p += 4;
+		if (is_prime_fast(p)) {
+			++count;
+			if (count == 10001) {
+				break;
+			}
+		}
+	}
+	return p;
+}
+
+long sum_primes_below(const long n) {
+	long p = 5;
+	long sum = 2 + 3 + 5;
+
+	for (;;) {
+		p += 2;
+		if (p >= n) {
+			break;
+		}
+		if (is_prime_fast(p)) {
+			sum += p;
+		}
+
+		p += 4;
+		if (p >= n) {
+			break;
+		}
+		if (is_prime_fast(p)) {
+			sum += p;
+		}
+	}
+	return sum;
+}
+
 long n_divisors(const long n) {
 	assert(n >= 1);
 
@@ -96,6 +144,20 @@ long n_divisors(const long n) {
 	}
 	return count;
 }
+
+long largest_prime_divisor(long n) {
+	assert(n >= 3);
+
+	long div = 1;
+	while (n != 1) {
+		div += 2;
+		while (n % div == 0) {
+			n /= div;
+		}
+	}
+	return div;
+}
+
 
 long sum_proper_divisors(const long n) {
 	assert(n >= 1);

@@ -10,6 +10,10 @@ long solve() {
 	mpz_class first(1);
 	mpz_class second(1);
 	mpz_class power_of_ten(10);
+
+	// Copying mpz integers is expensive. We avoid copying to a temporary
+	// variable by swapping pointers instead of values in the Fibonacci step
+	// that sets a to the old value of b.
 	mpz_class* a = &first;
 	mpz_class* b = &second;
 

@@ -24,6 +24,7 @@ long solve() {
 		}
 	}
 
+	// Add up numbers that aren't the sum of any two abundant numbers.
 	long total = 0;
 	for (long i = 1; i < max; ++i) {
 		// Find out if any two abundant numbers sum to i.

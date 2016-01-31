@@ -16,7 +16,10 @@ long n_digits(long n);
 bool is_palindrome(long n);
 bool is_prime(long n);
 bool is_prime_fast(long n);
+long nth_prime(long n);
+long sum_primes_below(long n);
 long n_divisors(long n);
+long largest_prime_divisor(long n);
 long sum_proper_divisors(long n);
 long combinations(long n, long k);
 

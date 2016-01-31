@@ -2,18 +2,12 @@
 // Project Euler: Problem 3
 // Largest prime factor
 
+#include "common.hpp"
+
 namespace problem_03 {
 
 long solve() {
-	long n = 600851475143;
-	long factor = 1;
-	while (n != 1) {
-		factor += 2;
-		while (n % factor == 0) {
-			n /= factor;
-		}
-	}
-	return static_cast<long>(factor);
+	return common::largest_prime_divisor(600851475143);
 }
 
 } // namespace problem_03

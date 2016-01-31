@@ -8,12 +8,14 @@
 namespace problem_24 {
 
 long solve() {
+	// Get the desired permutation.
 	constexpr long n_digits = 10;
 	std::array<long, n_digits> digits = {{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}};
 	for (long i = 0; i < 999999; ++i) {
 		std::next_permutation(digits.begin(), digits.end());
 	}
 
+	// Combine the digits into an integer.
 	long n = 0;
 	for (const long d : digits) {
 		n *= 10;

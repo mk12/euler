@@ -7,28 +7,7 @@
 namespace problem_10 {
 
 long solve() {
-	long sum = 2 + 3 + 5;
-	long n = 5;
-	constexpr long max = 2000000;
-
-	for (;;) {
-		n += 2;
-		if (n >= max) {
-			break;
-		}
-		if (common::is_prime_fast(n)) {
-			sum += n;
-		}
-
-		n += 4;
-		if (n >= max) {
-			break;
-		}
-		if (common::is_prime_fast(n)) {
-			sum += n;
-		}
-	}
-	return sum;
+	return common::sum_primes_below(2000000);
 }
 
 } // namespace problem_10
