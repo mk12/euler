@@ -17,7 +17,7 @@ long solve() {
 			powers.insert(n);
 		}
 	}
-	return powers.size();
+	return static_cast<long>(powers.size());
 }
 
 } // namespace problem_29
