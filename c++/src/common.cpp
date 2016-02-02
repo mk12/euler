@@ -2,8 +2,6 @@
 
 #include "common.hpp"
 
-#include <vector>
-
 #include <cassert>
 #include <cmath>
 #include <cstdio>
@@ -20,7 +18,7 @@ long max(const long a, const long b) {
 
 long n_digits(long n) {
 	long count = 0;
-	while (n > 0) {
+	while (n != 0) {
 		n /= 10;
 		++count;
 	}
