@@ -16,6 +16,23 @@ long max(const long a, const long b) {
 	return a > b ? a : b;
 }
 
+long gcd(long a, long b) {
+	while (b != 0) {
+		const long old_a = a;
+		a = b;
+		b = old_a % b;
+	}
+	return a;
+}
+
+void reduce_fraction(long& num, long& den) {
+	assert(den != 0);
+
+	const long d = gcd(num, den);
+	num /= d;
+	den /= d;
+}
+
 long n_digits(long n) {
 	long count = 0;
 	while (n != 0) {

@@ -12,6 +12,8 @@ namespace common {
 
 long min(long a, long b);
 long max(long a, long b);
+long gcd(long a, long b);
+void reduce_fraction(long& num, long& den);
 long n_digits(long n);
 bool is_palindrome(long n);
 bool is_prime(long n);

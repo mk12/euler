@@ -6,12 +6,12 @@
 #include <cstdlib>
 #include <cstring>
 
-constexpr int n_solved = 32;
+constexpr int n_solved = 33;
 constexpr long answers[n_solved] = {
 	233168, 4613732, 6857, 906609, 232792560, 25164150, 104743, 23514624000,
 	31875000, 142913828922, 70600674, 76576500, 5537376230, 837799,
 	137846528820, 1366, 21124, 1074, 171, 648, 31626, 871198282, 4179871,
-	2783915460, 4782, 983, -59231, 669171001, 9183, 443839, 73682, 45228
+	2783915460, 4782, 983, -59231, 669171001, 9183, 443839, 73682, 45228, 100
 };
 
 typedef long (*Solver)();
@@ -48,40 +48,18 @@ namespace problem_29 { long solve(); }
 namespace problem_30 { long solve(); }
 namespace problem_31 { long solve(); }
 namespace problem_32 { long solve(); }
+namespace problem_33 { long solve(); }
 
 constexpr Solver solvers[n_solved] = {
-	problem_01::solve,
-	problem_02::solve,
-	problem_03::solve,
-	problem_04::solve,
-	problem_05::solve,
-	problem_06::solve,
-	problem_07::solve,
-	problem_08::solve,
-	problem_09::solve,
-	problem_10::solve,
-	problem_11::solve,
-	problem_12::solve,
-	problem_13::solve,
-	problem_14::solve,
-	problem_15::solve,
-	problem_16::solve,
-	problem_17::solve,
-	problem_18::solve,
-	problem_19::solve,
-	problem_20::solve,
-	problem_21::solve,
-	problem_22::solve,
-	problem_23::solve,
-	problem_24::solve,
-	problem_25::solve,
-	problem_26::solve,
-	problem_27::solve,
-	problem_28::solve,
-	problem_29::solve,
-	problem_30::solve,
-	problem_31::solve,
-	problem_32::solve
+	problem_01::solve, problem_02::solve, problem_03::solve, problem_04::solve,
+	problem_05::solve, problem_06::solve, problem_07::solve, problem_08::solve,
+	problem_09::solve, problem_10::solve, problem_11::solve, problem_12::solve,
+	problem_13::solve, problem_14::solve, problem_15::solve, problem_16::solve,
+	problem_17::solve, problem_18::solve, problem_19::solve, problem_20::solve,
+	problem_21::solve, problem_22::solve, problem_23::solve, problem_24::solve,
+	problem_25::solve, problem_26::solve, problem_27::solve, problem_28::solve,
+	problem_29::solve, problem_30::solve, problem_31::solve, problem_32::solve,
+	problem_33::solve
 };
 
 bool has_solution(const int n) {
