@@ -23,7 +23,7 @@ long n_coin_sums(const long sum, const long index) {
 }
 
 long solve() {
-	return n_coin_sums(200, n_denoms);
+	return n_coin_sums(200, n_denoms - 1);
 }
 
 } // namespace problem_31
