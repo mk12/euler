@@ -10,6 +10,12 @@
 
 namespace common {
 
+constexpr long n_powers_of_ten = 10;
+constexpr long powers_of_ten[n_powers_of_ten] = {
+	1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000
+};
+
+
 long min(long a, long b);
 long max(long a, long b);
 long gcd(long a, long b);
