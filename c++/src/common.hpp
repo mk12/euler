@@ -22,6 +22,7 @@ long gcd(long a, long b);
 void reduce_fraction(long& num, long& den);
 long n_digits(long n);
 bool is_palindrome(long n);
+bool is_palindrome_binary(long n);
 bool is_prime(long n);
 bool is_prime_fast(long n);
 long nth_prime(long n);

@@ -63,6 +63,25 @@ bool is_palindrome(long n) {
 	return true;
 }
 
+bool is_palindrome_binary(const long n) {
+	long m = n;
+	long n_bits = 0;
+	while (m != 0) {
+		++n_bits;
+		m >>= 1;
+	}
+	m = n;
+	long hi_bit = 1 << (n_bits - 1);
+	for (long i = 0; i < n_bits / 2; ++i) {
+		if (!(m & 1) != !(m & hi_bit)) {
+			return false;
+		}
+		m >>= 1;
+		hi_bit >>= 2;
+	}
+	return true;
+}
+
 bool is_prime(const long n) {
 	if (n <= 1) {
 		return false;
