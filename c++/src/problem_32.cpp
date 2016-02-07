@@ -10,7 +10,7 @@ namespace problem_32 {
 bool is_pandigital(const long a, const long b, const long c) {
 	typedef std::array<bool, 9>::size_type sz_t;
 
-	// Record the occurrences of the digits 1 through 9.
+	// Record the occurrences of digits 1 through 9.
 	std::array<bool, 9> digits = {};
 	std::array<long, 3> numbers = {{a, b, c}};
 	for (long n : numbers) {
