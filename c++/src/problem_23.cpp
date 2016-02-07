@@ -13,10 +13,10 @@ long solve() {
 
 	// Build a lookup table and a sequence of ascending abundant numbers. This
 	// method is about ten times faster than using std::map.
-	constexpr long max = 28124;
-	std::vector<bool> table(static_cast<sz_t>(max), false);
+	constexpr long limit = 28124;
+	std::vector<bool> table(static_cast<sz_t>(limit), false);
 	std::vector<long> abundant_numbers;
-	for (long i = 1; i < max; ++i) {
+	for (long i = 1; i < limit; ++i) {
 		const bool abundant = common::sum_proper_divisors(i) > i;
 		table[static_cast<sz_t>(i)] = abundant;
 		if (abundant) {
@@ -26,7 +26,7 @@ long solve() {
 
 	// Add up numbers that aren't the sum of any two abundant numbers.
 	long total = 0;
-	for (long i = 1; i < max; ++i) {
+	for (long i = 1; i < limit; ++i) {
 		// Find out if any two abundant numbers sum to i.
 		bool is_sum = false;
 		const long half = i / 2;

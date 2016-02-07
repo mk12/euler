@@ -19,19 +19,19 @@ bool is_circular_prime(long n) {
 }
 
 long solve() {
-	constexpr long max = 1000000;
+	constexpr long limit = 1000000;
 	long n = 5;
 	long count = 3;
 	for (;;) {
 		n += 2;
-		if (n >= max) {
+		if (n >= limit) {
 			break;
 		}
 		if (is_circular_prime(n)) {
 			++count;
 		}
 		n += 4;
-		if (n >= max) {
+		if (n >= limit) {
 			break;
 		}
 		if (is_circular_prime(n)) {

@@ -34,13 +34,13 @@ bool is_pandigital(const long a, const long b, const long c) {
 }
 
 long solve() {
-	constexpr long max = 9876;
+	constexpr long limit = 9876;
 	std::vector<long> prods;
-	for (long i = 1; i <= max; ++i) {
-		const long max_j = max / i;
-		for (long j = 1; j < max_j; ++j) {
+	for (long i = 1; i <= limit; ++i) {
+		const long limit_j = limit / i;
+		for (long j = 1; j < limit_j; ++j) {
 			const long p = i * j;
-			if (p <= max && is_pandigital(i, j, p)) {
+			if (p <= limit && is_pandigital(i, j, p)) {
 				// Add the product if we haven't already seen it.
 				if (std::find(prods.begin(), prods.end(), p) == prods.end()) {
 					prods.push_back(p);

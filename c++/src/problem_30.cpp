@@ -15,9 +15,9 @@ bool is_sum_of_fifth_powers(long n) {
 }
 
 long solve() {
-	constexpr long max = 9*9*9*9*9*6;
+	constexpr long limit = 9*9*9*9*9*6;
 	long total = 0;
-	for (long i = 2; i <= max; ++i) {
+	for (long i = 2; i <= limit; ++i) {
 		if (is_sum_of_fifth_powers(i)) {
 			total += i;
 		}
