@@ -2,8 +2,6 @@
 // Project Euler: Problem 39
 // Integer right triangles
 
-#include "common.hpp"
-
 namespace problem_39 {
 
 long n_solutions(const long n) {
