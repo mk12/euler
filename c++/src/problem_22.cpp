@@ -10,17 +10,14 @@
 namespace problem_22 {
 
 long solve() {
-	std::vector<std::string> words = common::parse_words("p022_names.txt");
+	common::word_file wf("p022_names.txt");
+	std::vector<std::string> words = wf.read();
 	std::sort(words.begin(), words.end());
 
 	long total = 0;
 	long index = 1;
 	for (const std::string& w : words) {
-		long sum = 0;
-		for (const char c : w) {
-			sum += c - 'A' + 1;
-		}
-		total += sum * index;
+		total += index * common::word_value(w);
 		++index;
 	}
 	return total;

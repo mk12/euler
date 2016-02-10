@@ -21,6 +21,7 @@ long max(long a, long b);
 long gcd(long a, long b);
 void reduce_fraction(long& num, long& den);
 long n_digits(long n);
+bool is_triangular(long n);
 bool is_palindrome(long n);
 bool is_palindrome_binary(long n);
 bool is_prime(long n);
@@ -34,6 +35,35 @@ long combinations(long n, long k);
 
 long sum_of_digits(const mpz_class& n);
 
-std::vector<std::string> parse_words(const std::string& filename);
+long word_value(const std::string& word);
+
+class word_file final {
+public:
+	word_file(const std::string& filename);
+
+	std::vector<std::string> read();
+
+	class iterator;
+	iterator begin();
+	iterator end();
+
+	class iterator :
+			public std::iterator<std::output_iterator_tag, std::string> {
+	public:
+		iterator(std::ifstream& fs, bool finished);
+
+		std::string operator*() const;
+		iterator& operator++();
+		bool operator==(const iterator& rhs) const;
+		bool operator!=(const iterator& rhs) const;
+
+	private:
+		std::ifstream& _fs;
+		bool _finished;
+	};
+
+private:
+	std::ifstream _fs;
+};
 
 } // namespace common

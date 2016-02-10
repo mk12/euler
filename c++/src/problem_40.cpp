@@ -26,6 +26,7 @@ long nth_digit(const long n) {
 			return shifted % 10;
 		}
 	}
+	return -1;
 }
 
 long solve() {

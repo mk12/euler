@@ -42,6 +42,17 @@ long n_digits(long n) {
 	return count;
 }
 
+bool is_triangular(const long n) {
+	const long limit = n / 2 + 1;
+	const long two_n = n * 2;
+	for (long i = 1; i <= limit; ++i) {
+		if (i * (i + 1) == two_n) {
+			return true;
+		}
+	}
+	return false;
+}
+
 bool is_palindrome(long n) {
 	typedef std::vector<long>::size_type sz_t;
 	sz_t count = static_cast<sz_t>(n_digits(n));
@@ -235,15 +246,58 @@ long sum_of_digits(const mpz_class& n) {
 	return sum;
 }
 
-std::vector<std::string> parse_words(const std::string& filename) {
-	const std::string path = "../data/" + filename;
-	std::ifstream fs(path);
+long word_value(const std::string& word) {
+	long sum = 0;
+	for (const char c : word) {
+		sum += c - 'A' + 1;
+	}
+	return sum;
+}
+
+word_file::word_file(const std::string& filename) : _fs("../data/" + filename) {}
+
+std::vector<std::string> word_file::read() {
 	std::string token;
 	std::vector<std::string> words;
-	while (std::getline(fs, token, ',')) {
+	while (std::getline(_fs, token, ',')) {
 		words.push_back(token.substr(1, token.length() - 2));
 	}
+	_fs.close();
 	return words;
+}
+
+word_file::iterator word_file::begin() {
+	return iterator(_fs, false);
+}
+
+word_file::iterator word_file::end() {
+	return iterator(_fs, true);
+}
+
+word_file::iterator::iterator(std::ifstream& fs, bool finished)
+		: _fs(fs), _finished(finished) {
+	operator++();
+}
+
+std::string word_file::iterator::operator*() const {
+	assert(!_finished);
+
+	std::string token;
+	std::getline(_fs, token, ',');
+	return token.substr(1, token.length() - 2);
+}
+
+word_file::iterator& word_file::iterator::operator++() {
+	_finished = _finished || !_fs.good();
+	return *this;
+}
+
+bool word_file::iterator::operator==(const iterator& rhs) const {
+	return _finished == rhs._finished;
+}
+
+bool word_file::iterator::operator!=(const iterator& rhs) const {
+	return _finished != rhs._finished;
 }
 
 } // namespace common
