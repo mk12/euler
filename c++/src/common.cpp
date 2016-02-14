@@ -43,14 +43,8 @@ long n_digits(long n) {
 }
 
 bool is_triangular(const long n) {
-	const long limit = n / 2 + 1;
-	const long two_n = n * 2;
-	for (long i = 1; i <= limit; ++i) {
-		if (i * (i + 1) == two_n) {
-			return true;
-		}
-	}
-	return false;
+	double index = (sqrt(1 + 8 * n) - 1) / 2;
+	return floor(index) == index;
 }
 
 bool is_palindrome(long n) {
