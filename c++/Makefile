@@ -44,10 +44,10 @@ clean:
 
 $(EXEC): $(OBJS)
 	@echo "\033[0;31mLinking executable $(NAME)\033[0m"
-	@$(CXX) $(LDFLAGS) $^ -o $@
+	@$(CXX) $^ -o $@ $(LDFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@echo "\033[0;32mCXX\033[0m $<"
-	@$(CXX) $(CFLAGS) $(DEPFLAGS) -c $< -o $@
+	@$(CXX) -c $< -o $@ $(CFLAGS) $(DEPFLAGS)
 
 -include $(DEPS)
