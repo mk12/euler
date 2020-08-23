@@ -6,7 +6,7 @@ const answers = [
 	137846528820, 1366, 21124, 1074, 171, 648
 ]
 
-const usage = "usage: test [ -h | problem_number ]"
+const usage = "usage: test [-h | problem_number]"
 
 # Prints msg to stderr and exits with exit status 1 to indicate failure.
 function fail(msg)

@@ -83,7 +83,7 @@ bool has_solution(const int n) {
 }
 
 void print_usage(const bool error) {
-	static constexpr const char* usage = "usage: test [ -h | problem_number]\n";
+	static constexpr const char* usage = "usage: test [-h | problem_number]\n";
 	if (error) {
 		fputs(usage, stderr);
 	} else {

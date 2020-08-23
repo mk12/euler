@@ -1,6 +1,6 @@
 // Copyright 2016 Mitchell Kember. Subject to the MIT License.
 // Project Euler: Problem 4
-// Largest prime factor
+// Largest palindrome product
 
 #include "common.hpp"
 

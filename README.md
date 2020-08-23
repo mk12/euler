@@ -31,12 +31,16 @@ Compile [test.rs](rust/test.rs) to get the `test` binary. Make sure to enable op
 
 _(Note: the Rust solutions use outdated syntax and no longer compile with the latest compiler.)_
 
+### J
+
+Run [j/test.sh](j/test.sh).
+
 ## Usage
 
 Run the test program with the `-h` option to see its usage message:
 
 	$ ./test -h
-	usage: test [ -h | problem_number]
+	usage: test [-h | problem_number]
 
 Run it with no arguments to test all solutions.
 
