@@ -2,7 +2,7 @@ NB. Copyright 2020 Mitchell Kember. Subject to the MIT License.
 NB. Project Euler: Problem 9
 NB. Special Pythagorean triplet
 
-n =: 1 + i. 499
+n =: >: i. 499
 c =: 0 >. 1000 - +/~ n
 sos =: (([: *: [) + ([: *: ]))"0
 {: (, (sos/~ n) = *: c) # (, c * */~ n)
@@ -10,7 +10,7 @@ sos =: (([: *: [) + ([: *: ]))"0
 NB. Let (n) be the integers from 1 to 499. Since a < b < c, we have a < b < 500,
 NB. otherwise with b = 500, a = 1 any choice of c brings the total above 1000.
 NB.
-NB.     n =: 1 + i. 499
+NB.     n =: >: i. 499
 NB.
 NB. Calculate a (499 499) table of sums for all values of a and b.
 NB.

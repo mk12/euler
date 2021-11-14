@@ -5,7 +5,7 @@
 (ns euler.problem-19
   (:require [euler.common :as c]))
 
-(def month-lens [31 28 31 30 31 30 31 31 30 31 30 31]) 
+(def month-lens [31 28 31 30 31 30 31 31 30 31 30 31])
 (def feb-leap 29)
 
 (defn leap?

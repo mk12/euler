@@ -19,9 +19,9 @@ static answers: [int, ..n_solved] = [
 ];
 
 static solvers: [fn() -> int, ..n_solved] = [
-	problem_01::solve, problem_02::solve, problem_03::solve, problem_04::solve, 
-	problem_05::solve, problem_06::solve, problem_07::solve, problem_08::solve, 
-	problem_09::solve, problem_10::solve, problem_11::solve, problem_12::solve, 
+	problem_01::solve, problem_02::solve, problem_03::solve, problem_04::solve,
+	problem_05::solve, problem_06::solve, problem_07::solve, problem_08::solve,
+	problem_09::solve, problem_10::solve, problem_11::solve, problem_12::solve,
 	problem_13::solve, problem_14::solve, problem_15::solve, problem_16::solve,
 	problem_17::solve, problem_18::solve, problem_19::solve, problem_20::solve
 ];
